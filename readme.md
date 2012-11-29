@@ -1,0 +1,1 @@
+REST API for DC metro data. Abstracts standard WMATA REST API by normalising data field, adding additional meta-data and adding support for caching.

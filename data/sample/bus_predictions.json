@@ -1,0 +1,47 @@
+{
+  "Predictions": [
+    {
+      "DirectionNum": "0",
+      "DirectionText": "West to Tysons Corner - Westpark",
+      "Minutes": 12,
+      "RouteID": "23A",
+      "VehicleID": "2608"
+    },
+    {
+      "DirectionNum": "1",
+      "DirectionText": "East to Farragut Square",
+      "Minutes": 16,
+      "RouteID": "38B",
+      "VehicleID": "2670"
+    },
+    {
+      "DirectionNum": "0",
+      "DirectionText": "West to Tysons Corner - Westpark",
+      "Minutes": 44,
+      "RouteID": "23A",
+      "VehicleID": "2577"
+    },
+    {
+      "DirectionNum": "1",
+      "DirectionText": "East to Farragut Square",
+      "Minutes": 46,
+      "RouteID": "38B",
+      "VehicleID": "2665"
+    },
+    {
+      "DirectionNum": "0",
+      "DirectionText": "West to Tysons Corner - Westpark",
+      "Minutes": 74,
+      "RouteID": "23A",
+      "VehicleID": "2578"
+    },
+    {
+      "DirectionNum": "1",
+      "DirectionText": "East to Farragut Square",
+      "Minutes": 76,
+      "RouteID": "38B",
+      "VehicleID": "2644"
+    }
+  ],
+  "StopName": "N Glebe Rd + Washington Blvd"
+}

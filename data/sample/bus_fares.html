@@ -1,0 +1,1594 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en" lang="en">
+<head><script type="text/javascript" src="/CFIDE/scripts/cfform.js"></script>
+<script type="text/javascript" src="/CFIDE/scripts/masks.js"></script>
+
+  <title>WMATA - Rider Tools - Trip Planner</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <meta name="description" content="Washington Metropolitan Area Transit Authority: Trip Planner" />
+
+  <link rel="stylesheet" href="/css/main_new.css" type="text/css" />
+  <link rel="stylesheet" href="/css/superfish.css" type="text/css" />
+  <link rel="stylesheet" href="/css/superfishv.css" type="text/css" />
+  <link rel="stylesheet" href="/css/print.css" type="text/css" media="print" />
+  <link rel="stylesheet" href="/css/print_map.css" type="text/css" media="print" />
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/main.js"></script>
+  <script type="text/javascript" src="/js/superfish.js"></script>
+  <script type="text/javascript" src="/js/date.js"></script>
+  <script type="text/javascript" src="/js/jquery.datePicker.js"></script>
+  <script type="text/javascript" src="/js/mptoggle.js"></script>
+
+
+
+<script type="text/javascript" src="/js/customFormElements.js"></script>
+<style>
+<!--
+.select {
+  position: absolute;
+  width: 158px;
+  height: 21px;
+  padding: 0 24px 0 8px;
+  color:#333;
+  font: 12px/21px arial,sans-serif;
+
+    background: url(/img/select22.gif) no-repeat;
+
+  overflow: hidden;
+}
+
+-->
+</style>
+
+
+
+
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("ul.header-nav").superfish();
+    $("#leftMenu_tripplanner").addClass('on');
+  });
+</script>
+
+<!--[if lt IE 7]>
+<script language="JavaScript">
+function correctPNG() // correctly handle PNG transparency in Win IE 5.5 & 6.
+{
+   var arVersion = navigator.appVersion.split("MSIE")
+   var version = parseFloat(arVersion[1])
+   if ((version >= 5.5) && (document.body.filters))
+   {
+      for(var i=0; i<document.images.length; i++)
+      {
+         var img = document.images[i]
+         var imgName = img.src.toUpperCase()
+         if (imgName.substring(imgName.length-3, imgName.length) == "PNG")
+         {
+            var imgID = (img.id) ? "id='" + img.id + "' " : ""
+            var imgClass = (img.className) ? "class='" + img.className + "' " : ""
+            var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
+            var imgStyle = "display:inline-block;" + img.style.cssText
+            if (img.align == "left") imgStyle = "float:left;" + imgStyle
+            if (img.align == "right") imgStyle = "float:right;" + imgStyle
+            if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle
+            var strNewHTML = "<span " + imgID + imgClass + imgTitle
+            + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
+            + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
+            + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>"
+            img.outerHTML = strNewHTML
+            i = i-1
+         }
+      }
+   }
+}
+window.attachEvent("onload", correctPNG);
+</script>
+<![endif]-->
+
+
+
+<style type="text/css">
+<!--
+#motionPoint {
+  position:absolute;
+  width:200px;
+  height:115px;
+  z-index:1000;
+  left: 450px;
+
+    top: 6px;
+
+}
+-->
+</style>
+
+
+<script type="text/javascript">
+  if (window.ColdFusion) ColdFusion.required['email']=true;
+</script>
+<script type="text/javascript">
+<!--
+    _CF_checkCFForm_1 = function(_CF_this)
+    {
+        //reset on submit
+        _CF_error_exists = false;
+        _CF_error_messages = new Array();
+        _CF_error_fields = new Object();
+        _CF_FirstErrorField = null;
+
+        //form element email required check
+        if( _CF_hasValue(_CF_this['email'], "TEXT", false ) )
+        {
+            //form element email 'REGULAR_EXPRESSION' validation checks
+            if (!_CF_checkregex(_CF_this['email'].value, /.+@.+\..+/, true))
+            {
+                _CF_onError(_CF_this, "email", _CF_this['email'].value, "You must enter a proper email address");
+                _CF_error_exists = true;
+            }
+
+        }else {
+            _CF_onError(_CF_this, "email", _CF_this['email'].value, "You must enter a proper email address");
+            _CF_error_exists = true;
+        }
+
+
+        //display error messages and return success
+        if( _CF_error_exists )
+        {
+            if( _CF_error_messages.length > 0 )
+            {
+                // show alert() message
+                _CF_onErrorAlert(_CF_error_messages);
+                // set focus to first form error, if the field supports js focus().
+                if( _CF_this[_CF_FirstErrorField].type == "text" )
+                { _CF_this[_CF_FirstErrorField].focus(); }
+
+            }
+            return false;
+        }else {
+            return true;
+        }
+    }
+//-->
+</script>
+
+<script type="text/javascript">
+  if (window.ColdFusion) ColdFusion.required['email']=true;
+</script>
+<script type="text/javascript">
+<!--
+    _CF_checkCFForm_2 = function(_CF_this)
+    {
+        //reset on submit
+        _CF_error_exists = false;
+        _CF_error_messages = new Array();
+        _CF_error_fields = new Object();
+        _CF_FirstErrorField = null;
+
+        //form element email required check
+        if( _CF_hasValue(_CF_this['email'], "TEXT", false ) )
+        {
+            //form element email 'REGULAR_EXPRESSION' validation checks
+            if (!_CF_checkregex(_CF_this['email'].value, /.+@.+\..+/, true))
+            {
+                _CF_onError(_CF_this, "email", _CF_this['email'].value, "You must enter a proper email address");
+                _CF_error_exists = true;
+            }
+
+        }else {
+            _CF_onError(_CF_this, "email", _CF_this['email'].value, "You must enter a proper email address");
+            _CF_error_exists = true;
+        }
+
+
+        //display error messages and return success
+        if( _CF_error_exists )
+        {
+            if( _CF_error_messages.length > 0 )
+            {
+                // show alert() message
+                _CF_onErrorAlert(_CF_error_messages);
+                // set focus to first form error, if the field supports js focus().
+                if( _CF_this[_CF_FirstErrorField].type == "text" )
+                { _CF_this[_CF_FirstErrorField].focus(); }
+
+            }
+            return false;
+        }else {
+            return true;
+        }
+    }
+//-->
+</script>
+
+<script type="text/javascript">
+  if (window.ColdFusion) ColdFusion.required['Time']=true;
+</script>
+<script type="text/javascript">
+<!--
+    _CF_checktripPlanner = function(_CF_this)
+    {
+        //reset on submit
+        _CF_error_exists = false;
+        _CF_error_messages = new Array();
+        _CF_error_fields = new Object();
+        _CF_FirstErrorField = null;
+
+        //form element Time required check
+        if( _CF_hasValue(_CF_this['Time'], "TEXT", false ) )
+        {
+            //form element Time 'REGEX' validation checks
+            if (!_CF_checkregex(_CF_this['Time'].value, /^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$/, true))
+            {
+                _CF_onError(_CF_this, "Time", _CF_this['Time'].value, "You must enter a time in the proper format i.e. 08:42");
+                _CF_error_exists = true;
+            }
+
+        }else {
+            _CF_onError(_CF_this, "Time", _CF_this['Time'].value, "You must enter a time in the proper format i.e. 08:42");
+            _CF_error_exists = true;
+        }
+
+
+        //display error messages and return success
+        if( _CF_error_exists )
+        {
+            if( _CF_error_messages.length > 0 )
+            {
+                // show alert() message
+                _CF_onErrorAlert(_CF_error_messages);
+                // set focus to first form error, if the field supports js focus().
+                if( _CF_this[_CF_FirstErrorField].type == "text" )
+                { _CF_this[_CF_FirstErrorField].focus(); }
+
+            }
+            return false;
+        }else {
+            return true;
+        }
+    }
+//-->
+</script>
+
+<script type="text/javascript">
+  if (window.ColdFusion) ColdFusion.required['Time']=true;
+</script>
+<script type="text/javascript">
+<!--
+    _CF_checktripPlanner = function(_CF_this)
+    {
+        //reset on submit
+        _CF_error_exists = false;
+        _CF_error_messages = new Array();
+        _CF_error_fields = new Object();
+        _CF_FirstErrorField = null;
+
+        //form element Time required check
+        if( _CF_hasValue(_CF_this['Time'], "TEXT", false ) )
+        {
+            //form element Time 'REGEX' validation checks
+            if (!_CF_checkregex(_CF_this['Time'].value, /^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$/, true))
+            {
+                _CF_onError(_CF_this, "Time", _CF_this['Time'].value, "You must enter a time in the proper format i.e. 08:42");
+                _CF_error_exists = true;
+            }
+
+        }else {
+            _CF_onError(_CF_this, "Time", _CF_this['Time'].value, "You must enter a time in the proper format i.e. 08:42");
+            _CF_error_exists = true;
+        }
+
+
+        //display error messages and return success
+        if( _CF_error_exists )
+        {
+            if( _CF_error_messages.length > 0 )
+            {
+                // show alert() message
+                _CF_onErrorAlert(_CF_error_messages);
+                // set focus to first form error, if the field supports js focus().
+                if( _CF_this[_CF_FirstErrorField].type == "text" )
+                { _CF_this[_CF_FirstErrorField].focus(); }
+
+            }
+            return false;
+        }else {
+            return true;
+        }
+    }
+//-->
+</script>
+</head>
+<body>
+  <div id="container-outer">
+
+      <div id="container">
+
+      <div id="header">
+        <div id="headerlogo_NEW"><a href="/"><img src="/img/header-metro-logo_new.png" alt="WMATA" border="0" /></a></div>
+        <div class="headstyle1_new">
+                    <div class="headstyle-left">
+
+
+                    </div>
+                    <div class="headstyle-right">
+                        <form action="http://search.wmata.com/search" method="get">
+                            <input type="hidden" name="site" value="default_collection" />
+                            <input type="hidden" name="client" value="default_frontend" />
+                            <input type="hidden" name="proxystylesheet" value="default_frontend" />
+                            <input type="hidden" name="output" value="xml_no_dtd" />
+  <label for="searchbox"><span class="skip">Search</span><input type="text" name="q" value="" id="searchbox" alt="search" / title="search" value="search" style="background-image:url(/img/header-search2.gif?);"></label>
+
+             &nbsp;<input type="image" src="/img/button_go.gif" alt="Go" /></label>
+                        </form>
+                    </div>
+        </div>
+        <div class="skiplinks">
+          <a href="#maincontent">Skip to main content</a>
+
+          <a href="#secondarynav">Skip to secondary navigation</a>
+
+        </div>
+                <div class="headstyle2">
+
+
+<ul class="header-nav">
+  <li class="top">
+    <a href="/index.cfm" class="fixTopNav"><img src="/img/hb-home-off.gif" alt="" /><span>Home--</span></a> </li>
+
+  <li class="top multi">
+    <a href="/rail/" class="fixTopNav"><img src="/img/hb-rail-off.gif" alt="" /><span>Rail</span></a>
+    <ul>
+      <li><a href="/rail/maps/map.cfm?">Maps</a></li>
+            <li><a href="/rider_tools/metro_service_status/rail_Bus.cfm?">Alerts &amp; Advisories</a></li>
+      <li><a href="/rail/stations.cfm">Stations</a></li>
+
+      <li><a href="/rail/parking/">Parking</a></li>
+      <li><a href="/rail/service_reports/viewPage_update.cfm">Daily Service Reports</a></li>
+      <li><a href="/rail/elevators_escalators/">Elevators &amp; Escalators </a></li>
+      <li><a href="/rail/trackwork.cfm">Weekend Track Work </a></li>
+    </ul>
+  </li>
+
+  <li class="top multi">
+    <a href="/bus/" class="fixTopNav"><img src="/img/hb-bus-off.gif" alt="" /><span>Bus</span></a>
+    <ul>
+      <li><a href="/bus/maps/">Maps</a></li>
+      <li><a href="/bus/timetables/">Timetables</a></li>
+           <li><a href="/rider_tools/metro_service_status/rail_Bus.cfm?">Alerts &amp; Advisories</a></li>
+
+      <li><a href="/bus/transfers.cfm">Transfers</a></li>
+    </ul>
+  </li>
+
+  <li class="top multi">
+    <a href="/accessibility/" class="fixTopNav"><img src="/img/hb-access-off.gif" alt="" /><span>Accessibility</span></a>
+    <ul>
+      <li><a href="/accessibility/metrorail.cfm">Metrorail</a></li>
+      <li><a href="/accessibility/metrobus.cfm">Metrobus</a></li>
+      <li><a href="/accessibility/advocacy_policy/metro_accessible.cfm">Learn How to Use Metro</a></li>
+      <li><a href="/accessibility/metroaccess_service/">MetroAccess</a></li>
+            <li><a href="/accessibility/metroaccess_eligibility.cfm">Eligibility for Paratransit / Reduced Fare</a></li>
+
+      <li><a href="/accessibility/free_resources.cfm">Accessibility Resources</a></li>
+      <li><a href="/accessibility/advocacy_policy/">Accessibility Advisory Committee</a></li>
+    </ul>
+  </li>
+
+  <li class="top multi">
+    <a href="/getting_around/" class="fixTopNav"><img src="/img/hb-ga-off.gif" alt="" /><span>Getting Around</span></a>
+    <ul>
+      <li><a href="/getting_around/new_metro/">Getting to Metro</a></li>
+      <li><a href="/getting_around/visitor_info/">Visitor Information</a></li>
+            <li><a href="/getting_around/language_assistance.cfm">Language Assistance</a></li>
+            <li><a href="/getting_around/faregates.cfm">Faregates</a></li>
+      <li><a href="/getting_around/metro_events/venues.cfm">Metro to Events</a></li>
+      <li><a href="/getting_around/commuter_tips/">Commuter Tips</a></li>
+      <li><a href="/getting_around/regional_transit.cfm">Regional Transportation</a></li>
+      <li><a href="/getting_around/alt_trans/">Alternate Transportation</a></li>
+      <li><a href="/getting_around/snow.cfm">Severe Weather</a></li>
+      <li><a href="/getting_around/safety_security/">Safety &amp; Security</a></li>
+      <li><a href="/getting_around/bike_ride/">Bikes and Metro</a></li>
+    </ul>
+  </li>
+
+  <li class="top multi">
+    <a href="/fares/" class="fixTopNav"><img src="/img/hb-fares-off.gif" alt="" /><span>Fares</span></a>
+    <ul>
+      <li><a href="/fares/metrorail.cfm">Metrorail</a></li>
+      <li><a href="/fares/metrobus.cfm">Metrobus</a></li>
+      <li><a href="/fares/smartrip/">SmarTrip&reg;</a></li>
+      <li><a href="/fares/reduced.cfm">Reduced Fare Program</a></li>
+      <li><a href="/fares/purchase/passes.cfm">Pass &amp; Farecard Options</a></li>
+      <li><a href="/fares/purchase/store/">Online Fare Purchases</a></li>
+      <li><a href="/fares/purchase/vending.cfm">Vending Machines</a></li>
+      <li><a href="/fares/purchase/where.cfm">Sales Locations</a></li>
+      <li><a href="/fares/purchase/refunds.cfm">Refunds &amp; Exchanges</a></li>
+    </ul>
+  </li>
+
+  <li class="top multi">
+    <a href="/rider_tools/" class="fixTopNav"><img src="/img/hb-ridertools-on.gif" alt="" /><span>Rider Tools</span></a>
+    <ul>
+      <li><a href="/rider_tools/tripplanner/tripplanner_form_solo.cfm">Trip Planner</a></li>
+
+            <li><a href="/rider_tools/metro_service_status/rail_Bus.cfm?">Alerts &amp; Advisories</a></li>
+      <li><a href="https://elstat.wmata.com">ELstat</a></li>
+      <li><a href="/rider_tools/metro_service_status/elevator_escalator.cfm">Elevator/Escalator Status</a></li>
+      <li><a href="/rider_tools/pids/real_time_arrivals.cfm">Next Train Arrivals</a></li>
+            <li><a href="/rider_tools/nextbus/arrivals.cfm">Next Bus Arrivals</a></li>
+      <li><a href="/rider_tools/servicenearby/index.cfm">Service Nearby</a></li>
+      <li><a href="/rider_tools/ealerts/">MetroAlerts</a></li>
+      <li><a href="/rider_tools/mobile_services.cfm">Mobile Services</a></li>
+      <li><a href="/rider_tools/calculator/calculator.cfm">Savings Calculator</a></li>
+            <li><a href="/rider_tools/developer_resources.cfm">Developer Resources</a></li>
+    </ul>
+  </li>
+
+  <li class="top">
+    <a href="/about_metro/" class="fixTopNav"><img src="/img/hb-about-off.gif" alt="" /><span>About Metro</span></a>
+    <ul>
+      <li><a href="/about_metro/board_of_directors/">Board of Directors</a></li>
+      <li><a href="/about_metro/general_manager/index.cfm?">General Manager</a></li>
+
+
+      <li><a href="/momentum/index.cfm">Strategic Plan</a></li>
+      <li><a href="/about_metro/scorecard/index.cfm?">Scorecard</a></li>
+      <li><a href="/about_metro/inspector_general/">Inspector General</a></li>
+      <li><a href="/careers/index.cfm?">Careers</a></li>
+      <li><a href="/about_metro/transit_police/">Transit Police</a></li>
+            <li><a href="/about_metro/news/newsroom.cfm">Newsroom</a></li>
+
+
+      <li><a href="/about_metro/faqs.cfm">Questions & Answers</a></li>
+      <li><a href="/about_metro/riders_advisory_council/">Riders' Advisory Council</a></li>
+      <li><a href="/about_metro/public_rr.cfm?">Public Records &amp; Reports</a></li>
+      <li><a href="/about_metro/planning_dev.cfm">Planning &amp; Development</a></li>
+            <li><a href="/about_metro/incidents_investigations.cfm?">Safety Oversight</a></li>
+      <li><a href="/stimulus/index.cfm?nocache">Stimulus Program</a></li>
+      <li><a href="/about_metro/civil_rights.cfm">Civil Rights - Title VI</a></li>
+      <li><a href="/about_metro/lost_found">Lost &amp; Found</a></li>
+      <li><a href="/about_metro/contact.cfm">Contact Metro</a></li>
+    </ul>
+
+</ul>
+
+        </div>      </div>
+
+
+            <div id="sandbox">
+
+        <div id="internal-col1">
+
+          <a name="secondarynav" id="secondarynav"></a>
+          <div id="internal-box1">
+            <div id="internal-box1-inner">
+              <ul class="left-nav">
+  <li class="top" id="leftMenu_fares"><a href="/rider_tools/"><span style="color: #0a94d6; font-size: 120% !important; font-weight: bold; margin-bottom: 3px; margin-left: 0px">Rider Tools</span></a></li>
+  <li class="top" id="leftMenu_tripplanner"><a href="/rider_tools/tripplanner/tripplanner_form_solo.cfm"><span>Trip Planner</span></a></li>
+
+ <li class="top" id="leftMenu_metro_service_status" ><a href="/rider_tools/metro_service_status/rail_bus.cfm?nocache"><span >Alerts & Advisories</span></a></li>
+  <li class="top" id="leftMenu_metro_service_status2"><a href="https://elstat.wmata.com" target="_blank"><span>ELstat</span></a></li>
+  <li class="top" id="leftMenu_metro_service_status2"><a href="/rider_tools/metro_service_status/elevator_escalator.cfm?nocache"><span>Elevator/Escalator Status</span></a></li>
+  <li class="top" id="leftMenu_real_time_arrivals"><a href="/rider_tools/pids/real_time_arrivals.cfm"><span>Next Train Arrivals</span></a></li>
+  <li class="top multi" id="leftMenu_next_bus_arrivals">
+    <a href="/rider_tools/nextbus/arrivals.cfm"><span>Next Bus Arrivals</span></a>
+    <ul>
+      <li><a href="/rider_tools/nextbus/about_nextbus.cfm">About Next Bus</a></li>
+      <li><a href="/rider_tools/nextbus/faq.cfm">Frequently Asked Questions</a></li>
+      <li><a href="http://wmata.nextbus.com/customStopSelector/adaRoute.jsp?a=wmata&cssFile=http://www.wmata.com/css/nextbus.css?nocache">Accessible Version</a></li>
+    </ul>
+  </li>
+  <li class="top" id="leftMenu_service_nearby"><a href="/rider_tools/servicenearby/index.cfm"><span>Service Nearby</span></a></li>
+
+  <li class="top multi" id="leftMenu_ealerts">
+    <a href="/rider_tools/ealerts/"><span>MetroAlerts</span></a>
+    <ul>
+      <li><a href="/rider_tools/ealerts/eAlerts_help.cfm">MetroAlerts Help</a></li>
+      <li><a href="/rider_tools/metro_service_status/rail_bus.cfm?">RSS Feeds</a></li>
+      <li><a href="/rider_tools/ealerts/disclaimer.cfm">Disclaimer</a></li>
+    </ul>
+  </li>
+  <li class="top" id="leftMenu_mobile_services"><a href="/rider_tools/mobile_services.cfm"><span>Mobile Services</span></a></li>
+  <li class="top" id="leftMenu_savings_calculator"><span><a href="/rider_tools/calculator/calculator.cfm">Savings Calculator</a></span></li>
+   <li class="top" id="leftMenu_developer_resources"><span><a href="/rider_tools/developer_resources.cfm">Developer Resources</a></span></li>
+</ul>
+</ul>
+<ul class="skiplinks">
+<li><a href="/index.cfm">Home</a></li>
+<li><a href="/rail/">Rail</a></li>
+<li><a href="/bus/">Bus</a></li>
+<li><a href="/accessibility/">Accessibility</a></li>
+<li><a href="/getting_around/">Getting Around</a></li>
+<li><a href="/fares/">Fares</a></li>
+
+<li><a href="/about_metro/">About Metro</a></li>
+<li><a href="/business/index.cfm">Business with Metro</a></li>
+<li><a href="/careers/">Careers</a></li>
+<li><a href="/community_outreach//">Community Outreach</a></li>
+</ul>
+
+
+            </div>
+            <div id="internal-box1-foot"></div>
+          </div>
+
+          <div class="ad-vertical">
+            <div class="ad_store_top">
+              <div class="ad_store_mid">
+
+  <a href="/tile_rotator/redirect.cfm?BanID=69&amp;target=/community_outreach/metroarts/                                                                                          "><img src="/tiles2/metroarts_ad.jpg" border="0" alt="MetroArts Art in Transit video ad                 " /></a>
+
+              </div>
+              <div class="ad_store_bottom"></div>
+            </div>
+          </div>
+
+          <div class="ad-vertical">
+            <div class="ad-scaper-google">
+              <div class="ad-scaper-google-inner">
+              <script type="text/javascript"><!--
+google_ad_client = "pub-9206482252431813";
+/* 160x600, created 11/19/08 */
+google_ad_slot = "3642718954";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+              </div>
+              <div class="ad-scaper-google-foot"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="internal-col2">
+          <div class="internal-box2">
+            <div class="internal-box2-inner">
+            <a name="maincontent"></a>
+
+
+
+<!-- content -->
+
+<h1>Trip Planner</h1>
+
+<p>
+ <!-- 777: Ballston //-->
+
+
+<a name="top"></a>
+
+
+
+
+
+<SCRIPT type="text/javascript">
+  $(document).ready(function() {
+    $("ul.header-nav").superfish();
+    $("#leftMenu_stations").addClass('on');
+
+  });
+</SCRIPT>
+
+<!-- new trip res js! -->
+<SCRIPT type="text/javascript">
+$(document).ready(function(){
+  // show/hide top module
+  $('.collapse').toggle(
+    function(){
+      var link = $(this);
+      link.parent().next('.results').slideUp(function() {
+        link.text('[+] Expand');
+        link.html('<img src=images/plus4.png>');
+      });
+    },
+    function() {
+      var link = $(this);
+      link.parent().next('.results').slideDown(function() {
+        link.text('[-] Collapse');
+        link.html('<img src=images/minus4.png>');
+      });
+    }
+  );
+});
+</SCRIPT>
+
+
+
+
+
+
+<A href="#itin" class="skip">skip disclaimer</A>
+
+
+
+  <p align="right">
+
+  <a href="tripplanner_form_solo.cfm">Modify itinerary</a> |
+
+    <a href="#bottom">More options</a> |
+    <a href="javascript:window.print();">Print</a>
+
+    </p>
+
+
+
+
+
+
+
+<p>Itineraries shown below may not account for temporary delays or detours caused by unexpected service disruptions, scheduled track work, construction or special events. Alerts and advisories that may affect your trip will be displayed below your itinerary.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a name="itin"></a>
+
+
+
+
+
+<p align="center" style=" font-size:16px;">From
+
+<b>
+
+
+
+
+<!-- mp_trans_disable_start -->BALLSTON<!-- mp_trans_disable_end -->
+</b>
+
+to
+
+<b>
+
+
+<!-- mp_trans_disable_start -->DUPONT CIRCLE<!-- mp_trans_disable_end --></b>
+on <b>11/26/2012</b>
+</p>
+
+        <div class="trip_planner tr">
+        <div class="trip_planner_btm t_res">
+            <div class="trip_planner_inner">
+            <div class="gradient t_results">
+
+            <div id="top_heading"> <h2>Itinerary 1</h2>
+      &nbsp;<I>
+
+
+  <FONT color="#666666" size="-1">&nbsp;(approx 31 min transit)</FONT>
+</I>
+            <a class="collapse" href="#"><img src="images/minus4.png" alt="[-] Collapse" title="[-] Collapse"></a>
+            </div>
+
+
+      <div class="results">
+            <ul class="ltinerary">
+
+
+
+        <li>
+
+
+            <div class="dots">
+        <div title="This contains the various legs of the trip for itinerary number 1.">
+
+
+
+
+
+                <h3><!-- mp_trans_disable_start -->Bus<!-- mp_trans_disable_end --> Departs from</h3>
+
+
+
+
+         <p><span>
+
+
+                <!-- mp_trans_disable_start -->BALLSTON STATION & BUS BAY B<!-- mp_trans_disable_end --></span><br />
+        <span class="strong">at 9:40pm
+
+        </span></p>
+          </div>
+
+            <div>
+
+            <h3>Board</h3>
+
+
+<!-- *********************************************************************************************************************************************************** /bus/timetables/va/38b.pdf -->
+
+
+              <p><span><a href="/bus/timetables/va/38b.pdf" target="_blank" title="Click here to view bus schedule." alt="Click here to view bus schedule."><!-- mp_trans_disable_start -->38B BUS<!-- mp_trans_disable_end --></a></span><br />
+
+
+              <a href="/bus/timetables/va/38b.pdf" target="_blank"><img src="Images/pdficon_small.gif" title="Click here to view bus schedule." alt="Click here to view bus schedule." border="0" align="absmiddle" /></a>
+
+              towards
+
+              <span class="strong"><!-- mp_trans_disable_start -->FARRAGUT SQUARE<!-- mp_trans_disable_end --></span></p>
+
+                        </div>
+
+
+        <!-- Arrive TD -->
+
+        <div>
+              <h3>Arrive</h3>
+
+
+
+        <p><span>
+
+
+
+          <!-- mp_trans_disable_start -->K ST NW & 20TH ST NW (MAIN)<!-- mp_trans_disable_end --> </span><br />
+        at <span class="strong">10:11pm
+
+
+        </span></p>
+
+                </div>
+                </div>
+            </li>
+
+
+
+
+      <li>
+      <p> <span class="res">Walk 0.62</span> mile <span class="res">N</span> to
+      <span style="font-weight:bold">
+
+
+        <!-- mp_trans_disable_start -->DUPONT CIRCLE<!-- mp_trans_disable_end -->
+      </span> &nbsp;&nbsp;&nbsp;
+
+
+
+
+
+       <br />
+
+  <a class="gd" href="walking_directions.cfm?Startlat=38.902451&amp;Startlong=-77.045172&amp;Endlat=38.911115&amp;Endlong=-77.044865&amp;Starttext=K%20ST%20NW%20%2C%2020TH%20ST%20NW%20%28MAIN%29&amp;Endtext=DUPONT%20CIRCLE&FinalWalkOriginStopID=27396&Date=11/26/2012&Time=2211">Get directions</a>
+      </li>
+      </ul>
+
+
+
+     <DIV style="font-size:11px; background-color:white; padding-left:10px; padding-bottom:5px; color:gray">
+     &nbsp;
+     <br />
+
+
+
+
+
+    </DIV>
+
+
+
+
+     <DIV style="font-size:11px; background-color:white; padding-bottom:5px; color:gray;">
+
+     </DIV >
+    <div class="fare_and_email">
+      <div class="st_fare">
+                <span class="price">$  1.60</span>
+                <span class="stf"><A href="http://www.wmata.com/fares/smartrip/" target="_blank">SmarTrip Fare</A></span>
+      </div>
+
+            <div class="st_fare_mid">
+        <ul class="fares">
+
+
+                    <li><span class="strong">$  0.80</span> SmarTrip (Senior/Disabled/Medicare)</li>
+                    <li><span class="strong">$  1.80</span> Cash / Farecard </li>
+                    <li><span class="strong">$  0.90</span> Cash / Farecard (Senior/Disabled/Medicare)</li>
+                    <li><span style="font-size:9px;">(Only Cash & SmarTrip are accepted on Buses)</span></li>
+
+              </ul>
+      </div>
+
+
+            <div class="email" style="background: url(images/email_bg.gif); width:223px; height:88px">
+        <form name="CFForm_1" id="CFForm_1" action="parseplanTrip_emailItin.cfm" method="post" class="email_f" onsubmit="return _CF_checkCFForm_1(this)">
+              <fieldset>
+
+        <input type="hidden" name="Itin_header"
+        value="Traveling from  BALLSTON to  DUPONT CIRCLE on 11/26/2012" />
+        <input type="hidden" name="Itin"
+        value="Bus: Departs from BALLSTON STATION & BUS BAY B at 9:40pm Take  <!-- mp_trans_disable_start -->38B BUS<!-- mp_trans_disable_end --> towards <!-- mp_trans_disable_start -->FARRAGUT SQUARE<!-- mp_trans_disable_end -->  » K ST NW & 20TH ST NW (MAIN) at 10:11pm Walk 0.62 mile N to DUPONT CIRCLE >> SMARTRIP FARE: (Senior/Disabled/Medicare): $ 1.60  ($ 0.80)
+>> CASH FARE: (Senior/Disabled/Medicare): $ 1.80  ($ 0.90)
+
+" />
+
+        <input name="email" id="email"  type="text" maxlength="55"  class="email_input"  title="Email itinerary 1"  alt="Enter your email"  />
+
+
+        <input class="send_gb" type="image" alt="Send" value="Submit" src="/img/send_gb.gif" />
+
+      </fieldset>
+            </form>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+
+        </div><!-- gradient -->
+      </div><!-- trip planner inner -->
+    </div><!-- trip planner btm -->
+      <div class="clb"></div>
+  </div><!-- trip planner -->
+
+        <div class="trip_planner tr">
+        <div class="trip_planner_btm t_res">
+            <div class="trip_planner_inner">
+            <div class="gradient t_results">
+
+            <div id="top_heading"> <h2>Itinerary 2</h2>
+      &nbsp;<I>
+
+
+  <FONT color="#666666" size="-1">&nbsp;(approx 31 min transit)</FONT>
+</I>
+            <a class="collapse" href="#"><img src="images/minus4.png" alt="[-] Collapse" title="[-] Collapse"></a>
+            </div>
+
+
+      <div class="results">
+            <ul class="ltinerary">
+
+
+
+        <li>
+
+
+            <div class="dots">
+        <div title="This contains the various legs of the trip for itinerary number 2.">
+
+
+
+
+
+                <h3><!-- mp_trans_disable_start -->Bus<!-- mp_trans_disable_end --> Departs from</h3>
+
+
+
+
+         <p><span>
+
+
+                <!-- mp_trans_disable_start -->BALLSTON STATION & BUS BAY B<!-- mp_trans_disable_end --></span><br />
+        <span class="strong">at 10:10pm
+
+        </span></p>
+          </div>
+
+            <div>
+
+            <h3>Board</h3>
+
+
+<!-- *********************************************************************************************************************************************************** /bus/timetables/va/38b.pdf -->
+
+
+              <p><span><a href="/bus/timetables/va/38b.pdf" target="_blank" title="Click here to view bus schedule." alt="Click here to view bus schedule."><!-- mp_trans_disable_start -->38B BUS<!-- mp_trans_disable_end --></a></span><br />
+
+
+              <a href="/bus/timetables/va/38b.pdf" target="_blank"><img src="Images/pdficon_small.gif" title="Click here to view bus schedule." alt="Click here to view bus schedule." border="0" align="absmiddle" /></a>
+
+              towards
+
+              <span class="strong"><!-- mp_trans_disable_start -->FARRAGUT SQUARE<!-- mp_trans_disable_end --></span></p>
+
+                        </div>
+
+
+        <!-- Arrive TD -->
+
+        <div>
+              <h3>Arrive</h3>
+
+
+
+        <p><span>
+
+
+
+          <!-- mp_trans_disable_start -->K ST NW & 20TH ST NW (MAIN)<!-- mp_trans_disable_end --> </span><br />
+        at <span class="strong">10:41pm
+
+
+        </span></p>
+
+                </div>
+                </div>
+            </li>
+
+
+
+
+      <li>
+      <p> <span class="res">Walk 0.62</span> mile <span class="res">N</span> to
+      <span style="font-weight:bold">
+
+
+        <!-- mp_trans_disable_start -->DUPONT CIRCLE<!-- mp_trans_disable_end -->
+      </span> &nbsp;&nbsp;&nbsp;
+
+
+
+
+
+       <br />
+
+  <a class="gd" href="walking_directions.cfm?Startlat=38.902451&amp;Startlong=-77.045172&amp;Endlat=38.911115&amp;Endlong=-77.044865&amp;Starttext=K%20ST%20NW%20%2C%2020TH%20ST%20NW%20%28MAIN%29&amp;Endtext=DUPONT%20CIRCLE&FinalWalkOriginStopID=27396&Date=11/26/2012&Time=2241">Get directions</a>
+      </li>
+      </ul>
+
+
+
+     <DIV style="font-size:11px; background-color:white; padding-left:10px; padding-bottom:5px; color:gray">
+     &nbsp;
+     <br />
+
+
+
+
+
+    </DIV>
+
+
+
+
+     <DIV style="font-size:11px; background-color:white; padding-bottom:5px; color:gray;">
+
+     </DIV >
+    <div class="fare_and_email">
+      <div class="st_fare">
+                <span class="price">$  1.60</span>
+                <span class="stf"><A href="http://www.wmata.com/fares/smartrip/" target="_blank">SmarTrip Fare</A></span>
+      </div>
+
+            <div class="st_fare_mid">
+        <ul class="fares">
+
+
+                    <li><span class="strong">$  0.80</span> SmarTrip (Senior/Disabled/Medicare)</li>
+                    <li><span class="strong">$  1.80</span> Cash / Farecard </li>
+                    <li><span class="strong">$  0.90</span> Cash / Farecard (Senior/Disabled/Medicare)</li>
+                    <li><span style="font-size:9px;">(Only Cash & SmarTrip are accepted on Buses)</span></li>
+
+              </ul>
+      </div>
+
+
+            <div class="email" style="background: url(images/email_bg.gif); width:223px; height:88px">
+        <form name="CFForm_2" id="CFForm_2" action="parseplanTrip_emailItin.cfm" method="post" class="email_f" onsubmit="return _CF_checkCFForm_2(this)">
+              <fieldset>
+
+        <input type="hidden" name="Itin_header"
+        value="Traveling from  BALLSTON to  DUPONT CIRCLE on 11/26/2012" />
+        <input type="hidden" name="Itin"
+        value="Bus: Departs from BALLSTON STATION & BUS BAY B at 10:10pm Take  <!-- mp_trans_disable_start -->38B BUS<!-- mp_trans_disable_end --> towards <!-- mp_trans_disable_start -->FARRAGUT SQUARE<!-- mp_trans_disable_end -->  » K ST NW & 20TH ST NW (MAIN) at 10:41pm Walk 0.62 mile N to DUPONT CIRCLE >> SMARTRIP FARE: (Senior/Disabled/Medicare): $ 1.60  ($ 0.80)
+>> CASH FARE: (Senior/Disabled/Medicare): $ 1.80  ($ 0.90)
+
+" />
+
+        <input name="email" id="email"  type="text" maxlength="55"  class="email_input"  title="Email itinerary 2"  alt="Enter your email"  />
+
+
+        <input class="send_gb" type="image" alt="Send" value="Submit" src="/img/send_gb.gif" />
+
+      </fieldset>
+            </form>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+
+        </div><!-- gradient -->
+      </div><!-- trip planner inner -->
+    </div><!-- trip planner btm -->
+      <div class="clb"></div>
+  </div><!-- trip planner -->
+
+
+
+<a name="w"></a>
+
+
+        <script>
+        <!--
+        var click=0;
+        function showStatusMsg(){
+
+        }
+        //-->
+        </script>
+
+                <A name="bottom"></A>
+                <div id="trip_adjustments">
+                    <div id="ta_btm">
+                        <div id="ta_inner">
+
+
+
+<script language="javascript" src="Scripts/ChgMthPopDays.js">
+</script>
+
+
+<a name="returnTrip"></a>
+
+<div class="time_date_module">
+<div class="inner_grad">
+<h2>Plan Return Trip</h2>
+<div class="landingHR" style="height:5px"></div>
+
+<p>To plan a return trip, use the form below.</p>
+
+<form name="tripPlanner" id="tripPlanner" action="tripplanner.cfm" method="post" class="td_frm" onsubmit="return _CF_checktripPlanner(this)">
+    <input type="hidden" name="show_email" value="on" />
+
+  <input type="hidden" name="Minimize" value="T" />
+
+  <input type="hidden" name="StreetAddressTo"
+  value="Ballston" />
+  <input type="hidden" name="StreetAddressFrom"
+  value="Dupont Circle" />
+  <input type="hidden" name="StreetAddressTo_Area"
+  value="" />
+  <input type="hidden" name="StreetAddressFrom_Area"
+  value="" />
+  <input type="hidden" name="Mode" value="B" />
+  <input type="hidden" name="WalkDistance" value="0.75" />
+
+
+<fieldset>
+    <div class="dt_inner">
+        <div id="time_wrap">
+        <label>Time</label>
+    <select name="ArrDep">
+      <option value="D" SELECTED>Leaving After
+      </option>
+      <option value="A" >Arriving By
+      </option>
+    </select>
+
+    <input name="Time" id="Time"  type="text" value="09:25" maxlength="5"  size="5"  alt="Enter travel time i.e. 08:42"  onblur="if( !_CF_hasValue(this, 'TEXT', false) && !_CF_checkregex(this.value,/^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$/, true) ){ _CF_onErrorAlert(new Array('You must enter a time in the proper format i.e. 08:42')); }" />
+
+    <select name="AMPM">
+      <option value="AM"
+      >AM</option>
+      <option value="PM"
+      SELECTED>PM</option>
+    </select>
+  </div>
+
+    <div id="date_wrap">
+        <label>Date</label>
+
+
+    <select name="dateMonth" onchange="updateDays(this.form)">
+      <option value="1" >
+      Jan</option>
+      <option value="2" >
+      Feb</option>
+      <option value="3" >
+      Mar</option>
+      <option value="4" >
+      Apr</option>
+      <option value="5" >
+      May</option>
+      <option value="6" >
+      Jun</option>
+      <option value="7" >
+      Jul</option>
+      <option value="8" >
+      Aug</option>
+      <option value="9" >
+      Sep</option>
+      <option value="10" >
+      Oct</option>
+      <option value="11" SELECTED>
+      Nov</option>
+      <option value="12" >
+      Dec</option>
+    </select>
+
+    <select name="dateDay" onmousedown="updateDays(this.form)">
+
+          <option value="1" >
+          1</option>
+
+          <option value="2" >
+          2</option>
+
+          <option value="3" >
+          3</option>
+
+          <option value="4" >
+          4</option>
+
+          <option value="5" >
+          5</option>
+
+          <option value="6" >
+          6</option>
+
+          <option value="7" >
+          7</option>
+
+          <option value="8" >
+          8</option>
+
+          <option value="9" >
+          9</option>
+
+          <option value="10" >
+          10</option>
+
+          <option value="11" >
+          11</option>
+
+          <option value="12" >
+          12</option>
+
+          <option value="13" >
+          13</option>
+
+          <option value="14" >
+          14</option>
+
+          <option value="15" >
+          15</option>
+
+          <option value="16" >
+          16</option>
+
+          <option value="17" >
+          17</option>
+
+          <option value="18" >
+          18</option>
+
+          <option value="19" >
+          19</option>
+
+          <option value="20" >
+          20</option>
+
+          <option value="21" >
+          21</option>
+
+          <option value="22" >
+          22</option>
+
+          <option value="23" >
+          23</option>
+
+          <option value="24" >
+          24</option>
+
+          <option value="25" >
+          25</option>
+
+          <option value="26" SELECTED
+          >
+          26</option>
+
+          <option value="27" >
+          27</option>
+
+          <option value="28" >
+          28</option>
+
+          <option value="29" >
+          29</option>
+
+          <option value="30" >
+          30</option>
+
+          <option value="31" >
+          31</option>
+
+    </select>
+
+
+    <select name="dateYear">
+
+      <option value="2012" SELECTED>2012</option>
+      <option value="2013" >2013</option>
+
+    </select>
+    </div>
+        </div>
+
+
+        <input id="submit_bb" type="image" alt="Submit"  name="submit" value="returnTrip" alt="Plan Return Trip" src="/images/submit_btn_blue.gif" />
+</fieldset>
+<input type='hidden' name='Time_CFFORMREGEX' value='^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$'>
+<input type='hidden' name='Time_CFFORMREQUIRED' value='You must enter a time in the proper format i.e. 08:42'>
+</form>
+
+</div><!-- inner grad -->
+</div><!-- time_date module -->
+
+
+<script language="javascript" src="Scripts/ChgMthPopDays.js">
+</script>
+
+
+<a name="returnTrip"></a>
+
+<div class="time_date_module right_module">
+<div class="inner_grad">
+<h2>Adjust Trip Date/Time</h2>
+<div class="landingHR" style="height:5px"></div>
+
+<p>To travel at a different time, use the form below.</p>
+
+<form name="tripPlanner" id="tripPlanner" action="tripplanner.cfm" method="post" class="td_frm" onsubmit="return _CF_checktripPlanner(this)">
+    <input type="hidden" name="show_email" value="on" />
+
+  <input type="hidden" name="Minimize" value="T" />
+  <input type="hidden" name="StreetAddressTo"
+  value="Dupont Circle" />
+  <input type="hidden" name="StreetAddressFrom"
+  value="Ballston" />
+  <input type="hidden" name="StreetAddressTo_Area"
+  value="" />
+  <input type="hidden" name="StreetAddressFrom_Area"
+  value="" />
+  <input type="hidden" name="Mode" value="B" />
+  <input type="hidden" name="WalkDistance" value="0.75" />
+
+
+<fieldset>
+<div class="dt_inner">
+    <div id="time_wrap">
+        <label>Time</label>
+    <select name="ArrDep">
+      <option value="D" SELECTED>Leaving After
+      </option>
+      <option value="A" >Arriving By
+      </option>
+    </select>
+
+    <input name="Time" id="Time"  type="text" value="09:25" maxlength="5"  size="5"  alt="Enter travel time i.e. 08:42"  onblur="if( !_CF_hasValue(this, 'TEXT', false) && !_CF_checkregex(this.value,/^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$/, true) ){ _CF_onErrorAlert(new Array('You must enter a time in the proper format i.e. 08:42')); }" />
+
+    <select name="AMPM">
+      <option value="AM"
+      >AM</option>
+      <option value="PM"
+      SELECTED>PM</option>
+    </select>
+  </div>
+
+    <div id="date_wrap">
+        <label>Date</label>
+
+
+    <select name="dateMonth" onchange="updateDays(this.form)">
+      <option value="1" >
+      Jan</option>
+      <option value="2" >
+      Feb</option>
+      <option value="3" >
+      Mar</option>
+      <option value="4" >
+      Apr</option>
+      <option value="5" >
+      May</option>
+      <option value="6" >
+      Jun</option>
+      <option value="7" >
+      Jul</option>
+      <option value="8" >
+      Aug</option>
+      <option value="9" >
+      Sep</option>
+      <option value="10" >
+      Oct</option>
+      <option value="11" SELECTED>
+      Nov</option>
+      <option value="12" >
+      Dec</option>
+    </select>
+
+    <select name="dateDay" onmousedown="updateDays(this.form)">
+
+          <option value="1" >
+          1</option>
+
+          <option value="2" >
+          2</option>
+
+          <option value="3" >
+          3</option>
+
+          <option value="4" >
+          4</option>
+
+          <option value="5" >
+          5</option>
+
+          <option value="6" >
+          6</option>
+
+          <option value="7" >
+          7</option>
+
+          <option value="8" >
+          8</option>
+
+          <option value="9" >
+          9</option>
+
+          <option value="10" >
+          10</option>
+
+          <option value="11" >
+          11</option>
+
+          <option value="12" >
+          12</option>
+
+          <option value="13" >
+          13</option>
+
+          <option value="14" >
+          14</option>
+
+          <option value="15" >
+          15</option>
+
+          <option value="16" >
+          16</option>
+
+          <option value="17" >
+          17</option>
+
+          <option value="18" >
+          18</option>
+
+          <option value="19" >
+          19</option>
+
+          <option value="20" >
+          20</option>
+
+          <option value="21" >
+          21</option>
+
+          <option value="22" >
+          22</option>
+
+          <option value="23" >
+          23</option>
+
+          <option value="24" >
+          24</option>
+
+          <option value="25" >
+          25</option>
+
+          <option value="26" SELECTED
+          >
+          26</option>
+
+          <option value="27" >
+          27</option>
+
+          <option value="28" >
+          28</option>
+
+          <option value="29" >
+          29</option>
+
+          <option value="30" >
+          30</option>
+
+          <option value="31" >
+          31</option>
+
+    </select>
+
+
+    <select name="dateYear">
+
+      <option value="2012" SELECTED>2012</option>
+      <option value="2013" >2013</option>
+
+    </select>
+    </div>
+        </div>
+
+
+        <input id="submit_bb" type="image" alt="Submit"  name="submit" value="adjustTime" alt="Adjust Date / Time" src="/images/submit_btn_blue.gif" />
+
+</fieldset>
+<input type='hidden' name='Time_CFFORMREGEX' value='^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$'>
+<input type='hidden' name='Time_CFFORMREQUIRED' value='You must enter a time in the proper format i.e. 08:42'>
+</form>
+
+</div><!-- inner grad -->
+</div><!-- time_date module -->
+                        </div>
+                    </div>
+                </div>
+
+
+        <p style="font-size:10px;" align="center">
+        <br />&nbsp;<br />
+        The Trip Planner is also available over the phone by calling: 202-637-7000 (TTY 638-3780).
+
+        <br />Visit Metro's <a href="/fares/purchase/where.cfm">Sales Locations search page</a> to find retail outlets that sell SmarTrip&reg; cards.
+        <br /><A href="javascript:alert('The following transit providers do not accept SmarTrip:\n\nMARC Commuter Train service\nVRE Commuter Train  service\nLaurel Connect-A-Ride\nHoward County Transit\nFrederick County Transit\nAnnapolis City Transit');">Click here</A> for a list of transit providers who do not accept SmarTrip.
+
+        </p>
+
+
+
+        <div id="time_module" align="center">
+
+
+        <p style="font-size:12px">
+
+                <IMG src="Images/icon_clock_sm.jpg" alt="" align="absmiddle" /> <B>View trips:</B> <A onmouseover="self.status=''; return true;"
+        onmouseout="self.status=''; return true;" href="parse_PlanTrip_timespan_scr.cfm?Startlat=38.882247&amp;Startlong=-77.111803&amp;Endlat=38.911115&amp;Endlong=-77.044865&amp;StreetAddressFrom=Ballston&amp;StreetAddressTo=Dupont%20Circle&StreetAddressFrom_Area=&amp;StreetAddressTo_Area=&Time=2125&Time2=09:25&Date=11/26/2012&Minimize=T&ArrDep=D&WalkDistance=0.75&Mode=B&AmPm=PM&DateDay=26&DateMonth=11&DateYear=2012&mout=1&ts=5" onclick="self.status='Please wait, loading ...';showStatusMsg();"><B>5</B></A>, <A onmouseover="self.status=''; return true;"
+        onmouseout="self.status=''; return true;" href="parse_PlanTrip_timespan_scr.cfm?Startlat=38.882247&amp;Startlong=-77.111803&amp;Endlat=38.911115&amp;Endlong=-77.044865&amp;StreetAddressFrom=Ballston&amp;StreetAddressTo=Dupont%20Circle&StreetAddressFrom_Area=&amp;StreetAddressTo_Area=&Time=2125&Time2=09:25&Date=11/26/2012&Minimize=T&ArrDep=D&WalkDistance=0.75&Mode=B&AmPm=PM&DateDay=26&DateMonth=11&DateYear=2012&mout=1&ts=10" onclick="self.status='Please wait, loading ...';showStatusMsg();"><B>10</B></A>, <A onmouseover="self.status=''; return true;"
+        onmouseout="self.status=''; return true;" href="parse_PlanTrip_timespan_scr.cfm?Startlat=38.882247&amp;Startlong=-77.111803&amp;Endlat=38.911115&amp;Endlong=-77.044865&amp;StreetAddressFrom=Ballston&amp;StreetAddressTo=Dupont%20Circle&StreetAddressFrom_Area=&amp;StreetAddressTo_Area=&Time=2125&Time2=09:25&Date=11/26/2012&Minimize=T&ArrDep=D&WalkDistance=0.75&Mode=B&AmPm=PM&DateDay=26&DateMonth=11&DateYear=2012&mout=1&ts=15" onclick="self.status='Please wait, loading ...';showStatusMsg();"><B>15</B></A>, <A onmouseover="self.status=''; return true;"
+        onmouseout="self.status=''; return true;" href="parse_PlanTrip_timespan_scr.cfm?Startlat=38.882247&amp;Startlong=-77.111803&amp;Endlat=38.911115&amp;Endlong=-77.044865&amp;StreetAddressFrom=Ballston&amp;StreetAddressTo=Dupont%20Circle&StreetAddressFrom_Area=&amp;StreetAddressTo_Area=&Time=2125&Time2=09:25&Date=11/26/2012&Minimize=T&ArrDep=D&WalkDistance=0.75&Mode=B&AmPm=PM&DateDay=26&DateMonth=11&DateYear=2012&mout=1&ts=20" onclick="self.status='Please wait, loading ...';showStatusMsg();"><B>20</B></A>, <A onmouseover="self.status=''; return true;"
+        onmouseout="self.status=''; return true;" href="parse_PlanTrip_timespan_scr.cfm?Startlat=38.882247&amp;Startlong=-77.111803&amp;Endlat=38.911115&amp;Endlong=-77.044865&amp;StreetAddressFrom=Ballston&amp;StreetAddressTo=Dupont%20Circle&StreetAddressFrom_Area=&amp;StreetAddressTo_Area=&Time=2125&Time2=09:25&Date=11/26/2012&Minimize=T&ArrDep=D&WalkDistance=0.75&Mode=B&AmPm=PM&DateDay=26&DateMonth=11&DateYear=2012&mout=1&ts=25" onclick="self.status='Please wait, loading ...';showStatusMsg();"><B>25</B></A> <B>minutes before and after.</B>
+
+
+        </p>
+
+      <a href="#">Back to top</a>&nbsp; <font color="#CCCCCC">|</font> &nbsp;<a href="tripplanner_form_solo.cfm">New itinerary</a>
+
+
+
+            </div>
+            <div class="clb"></div>
+           <!-- end content -->
+
+
+
+</p>
+<!-- end content -->
+
+
+
+
+            </div>
+            <div class="internal-box2-foot"></div>
+          </div>
+        </div>
+            </div>
+
+            <div id="footer">
+
+        <div class="row1">
+      <p class="inside-left">
+
+
+
+
+
+
+                         <a href="/about_metro/contact.cfm?">Contact Us</a> &nbsp; | &nbsp;
+            <a href="/about_metro/lost_found/">Lost &amp; Found</a> &nbsp; | &nbsp;
+             <a href="/about_metro/transit_police/">Police</a> &nbsp; | &nbsp;
+            <a href="/about_metro/news/newsroom.cfm">News</a> &nbsp; | &nbsp;
+              <a href="/business/index.cfm">Business</a> &nbsp; | &nbsp;
+
+
+
+             <a href="/getting_around/safety_security/">Safety</a> &nbsp; | &nbsp;
+             <a href="/community_outreach">Community</a> &nbsp; | &nbsp;
+             <a href="/careers">Careers</a> &nbsp; | &nbsp;
+             <a href="/about_metro/calendar/index.cfm?">Calendar</a> &nbsp; | &nbsp;
+             <A href="http://www.apistores.com/wmata/" target="_new">Metro Gifts</a> &nbsp; | &nbsp;
+     <a href="/getting_around/translation.cfm?">Translations</a> &nbsp;
+
+
+            </p>
+
+            <p class="inside-right">
+            <DIV align="right">
+
+
+            <Script language="JavaScript">
+            <!--
+                function goto(form) { var index=form.select.selectedIndex
+                if (form.select.options[index].value != "0") {
+                location=form.select.options[index].value;}}
+            //-->
+            </SCRIPT>
+
+            <FORM NAME="form1" >
+                <SELECT NAME="select" ONCHANGE="goto(this.form)" SIZE="1" style="height: 21px; font-size:75%; background-color:#f2f1f0; border:1px solid #d0d0d0;" >
+                <OPTION VALUE="" style="font-size:75%;">Languages</OPTION>
+                <OPTION VALUE="http://es.wmata.com//rider_tools/tripplanner/tripplanner.cfm">Espa&ntilde;ol</OPTION>
+                <OPTION VALUE="http://fr.wmata.com//rider_tools/tripplanner/tripplanner.cfm">Fran&ccedil;ais</OPTION>
+                <OPTION VALUE="http://ko.wmata.com//rider_tools/tripplanner/tripplanner.cfm">Korean</OPTION>
+                <OPTION VALUE="http://zs.wmata.com//rider_tools/tripplanner/tripplanner.cfm">Chinese</OPTION>
+                <OPTION VALUE="http://vi.wmata.com//rider_tools/tripplanner/tripplanner.cfm">Vietnamese</OPTION>
+                <OPTION mpdisurl value="http://www.wmata.com/index.cfm">English</OPTION>
+                </SELECT>
+
+
+
+
+                                         &nbsp;<a href="/accessibility/browse_aloud.cfm?"><img src="/img/speaker.gif" width="19" height="19" align="absmiddle" title="Browse Aloud Support" alt="BrowseAloud icon"></a>
+            </FORM>
+            </p>
+
+        </div>
+
+            </div>
+
+    </div>
+  </div>
+
+  <div id="footer2">
+    <img src="/img/footer-long-2.gif" alt="" /><br />
+    <div class="row2">
+      <p class="inside-left">&copy; 2012 Washington Metropolitan Area Transit Authority &nbsp; &nbsp; &nbsp; <a href="/about_metro/privacy.cfm?">Privacy Policy and Legal Disclaimer</A></p>
+    </div>
+    </div>
+<script type="text/javascript" src="/js/mpel.js"></script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3504190-1");
+pageTracker._trackPageview();
+</script>
+
+</body>
+</html>

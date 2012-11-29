@@ -1,0 +1,2049 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0067)http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm#bottom -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./fares_files/cfform.js"></script>
+<script type="text/javascript" src="./fares_files/masks.js"></script>
+
+<title>WMATA - Rider Tools - Trip Planner</title>
+
+
+<link rel="shortcut icon" href="http://www.wmata.com/favicon.ico" type="image/x-icon">
+<meta name="description" content="Washington Metropolitan Area Transit Authority: Trip Planner">
+
+<link rel="stylesheet" href="./fares_files/main_new.css" type="text/css">
+<link rel="stylesheet" href="./fares_files/superfish.css" type="text/css">
+<link rel="stylesheet" href="./fares_files/superfishv.css" type="text/css">
+<link rel="stylesheet" href="./fares_files/print.css" type="text/css" media="print">
+<link rel="stylesheet" href="./fares_files/print_map.css" type="text/css" media="print">
+
+<script type="text/javascript" src="./fares_files/jquery.min.js"></script>	
+<script type="text/javascript" src="./fares_files/main.js"></script>
+<script type="text/javascript" src="./fares_files/superfish.js"></script>
+<script type="text/javascript" src="./fares_files/date.js"></script>
+<script type="text/javascript" src="./fares_files/jquery.datePicker.js"></script>
+<script type="text/javascript" src="./fares_files/mptoggle.js"></script>
+
+
+
+<script type="text/javascript" src="./fares_files/customFormElements.js"></script>
+<style>
+<!--
+.select {
+	position: absolute;
+	width: 158px; 
+	height: 21px;
+	padding: 0 24px 0 8px;
+	color:#333;
+	font: 12px/21px arial,sans-serif;
+	
+  background: url(/img/select22.gif) no-repeat;
+  
+  overflow: hidden;
+}
+
+-->
+</style>
+
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $("ul.header-nav").superfish();
+  $("#leftMenu_tripplanner").addClass('on'); 
+});
+</script>
+
+<!--[if lt IE 7]>
+<script language="JavaScript">
+function correctPNG() // correctly handle PNG transparency in Win IE 5.5 & 6.
+{
+   var arVersion = navigator.appVersion.split("MSIE")
+   var version = parseFloat(arVersion[1])
+   if ((version >= 5.5) && (document.body.filters)) 
+   {
+      for(var i=0; i<document.images.length; i++)
+      {
+         var img = document.images[i]
+         var imgName = img.src.toUpperCase()
+         if (imgName.substring(imgName.length-3, imgName.length) == "PNG")
+         {
+            var imgID = (img.id) ? "id='" + img.id + "' " : ""
+            var imgClass = (img.className) ? "class='" + img.className + "' " : ""
+            var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
+            var imgStyle = "display:inline-block;" + img.style.cssText 
+            if (img.align == "left") imgStyle = "float:left;" + imgStyle
+            if (img.align == "right") imgStyle = "float:right;" + imgStyle
+            if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle
+            var strNewHTML = "<span " + imgID + imgClass + imgTitle
+            + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
+            + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
+            + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>" 
+            img.outerHTML = strNewHTML
+            i = i-1
+         }
+      }
+   }    
+}
+window.attachEvent("onload", correctPNG);
+</script>
+<![endif]-->
+
+
+
+<style type="text/css">
+<!--
+#motionPoint {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:1000;
+	left: 450px;
+	
+  top: 6px;
+  
+}
+-->
+</style>
+
+
+<script type="text/javascript">
+if (window.ColdFusion) ColdFusion.required['email']=true;
+</script>
+<script type="text/javascript">
+<!--
+_CF_checkCFForm_1 = function(_CF_this)
+{
+        //reset on submit
+        _CF_error_exists = false;
+        _CF_error_messages = new Array();
+        _CF_error_fields = new Object();
+        _CF_FirstErrorField = null;
+
+        //form element email required check
+        if( _CF_hasValue(_CF_this['email'], "TEXT", false ) )
+        {
+            //form element email 'REGULAR_EXPRESSION' validation checks
+            if (!_CF_checkregex(_CF_this['email'].value, /.+@.+\..+/, true))
+            {
+                _CF_onError(_CF_this, "email", _CF_this['email'].value, "You must enter a proper email address");
+                _CF_error_exists = true;
+            }
+
+        }else {
+            _CF_onError(_CF_this, "email", _CF_this['email'].value, "You must enter a proper email address");
+            _CF_error_exists = true;
+        }
+
+
+        //display error messages and return success
+        if( _CF_error_exists )
+        {
+            if( _CF_error_messages.length > 0 )
+            {
+                // show alert() message
+                _CF_onErrorAlert(_CF_error_messages);
+                // set focus to first form error, if the field supports js focus().
+                if( _CF_this[_CF_FirstErrorField].type == "text" )
+                    { _CF_this[_CF_FirstErrorField].focus(); }
+
+            }
+            return false;
+        }else {
+            return true;
+        }
+    }
+//-->
+</script>
+
+<script type="text/javascript">
+if (window.ColdFusion) ColdFusion.required['email']=true;
+</script>
+<script type="text/javascript">
+<!--
+_CF_checkCFForm_2 = function(_CF_this)
+{
+        //reset on submit
+        _CF_error_exists = false;
+        _CF_error_messages = new Array();
+        _CF_error_fields = new Object();
+        _CF_FirstErrorField = null;
+
+        //form element email required check
+        if( _CF_hasValue(_CF_this['email'], "TEXT", false ) )
+        {
+            //form element email 'REGULAR_EXPRESSION' validation checks
+            if (!_CF_checkregex(_CF_this['email'].value, /.+@.+\..+/, true))
+            {
+                _CF_onError(_CF_this, "email", _CF_this['email'].value, "You must enter a proper email address");
+                _CF_error_exists = true;
+            }
+
+        }else {
+            _CF_onError(_CF_this, "email", _CF_this['email'].value, "You must enter a proper email address");
+            _CF_error_exists = true;
+        }
+
+
+        //display error messages and return success
+        if( _CF_error_exists )
+        {
+            if( _CF_error_messages.length > 0 )
+            {
+                // show alert() message
+                _CF_onErrorAlert(_CF_error_messages);
+                // set focus to first form error, if the field supports js focus().
+                if( _CF_this[_CF_FirstErrorField].type == "text" )
+                    { _CF_this[_CF_FirstErrorField].focus(); }
+
+            }
+            return false;
+        }else {
+            return true;
+        }
+    }
+//-->
+</script>
+
+<script type="text/javascript">
+if (window.ColdFusion) ColdFusion.required['email']=true;
+</script>
+<script type="text/javascript">
+<!--
+_CF_checkCFForm_3 = function(_CF_this)
+{
+        //reset on submit
+        _CF_error_exists = false;
+        _CF_error_messages = new Array();
+        _CF_error_fields = new Object();
+        _CF_FirstErrorField = null;
+
+        //form element email required check
+        if( _CF_hasValue(_CF_this['email'], "TEXT", false ) )
+        {
+            //form element email 'REGULAR_EXPRESSION' validation checks
+            if (!_CF_checkregex(_CF_this['email'].value, /.+@.+\..+/, true))
+            {
+                _CF_onError(_CF_this, "email", _CF_this['email'].value, "You must enter a proper email address");
+                _CF_error_exists = true;
+            }
+
+        }else {
+            _CF_onError(_CF_this, "email", _CF_this['email'].value, "You must enter a proper email address");
+            _CF_error_exists = true;
+        }
+
+
+        //display error messages and return success
+        if( _CF_error_exists )
+        {
+            if( _CF_error_messages.length > 0 )
+            {
+                // show alert() message
+                _CF_onErrorAlert(_CF_error_messages);
+                // set focus to first form error, if the field supports js focus().
+                if( _CF_this[_CF_FirstErrorField].type == "text" )
+                    { _CF_this[_CF_FirstErrorField].focus(); }
+
+            }
+            return false;
+        }else {
+            return true;
+        }
+    }
+//-->
+</script>
+
+<script type="text/javascript">
+if (window.ColdFusion) ColdFusion.required['Time']=true;
+</script>
+<script type="text/javascript">
+<!--
+_CF_checktripPlanner = function(_CF_this)
+{
+        //reset on submit
+        _CF_error_exists = false;
+        _CF_error_messages = new Array();
+        _CF_error_fields = new Object();
+        _CF_FirstErrorField = null;
+
+        //form element Time required check
+        if( _CF_hasValue(_CF_this['Time'], "TEXT", false ) )
+        {
+            //form element Time 'REGEX' validation checks
+            if (!_CF_checkregex(_CF_this['Time'].value, /^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$/, true))
+            {
+                _CF_onError(_CF_this, "Time", _CF_this['Time'].value, "You must enter a time in the proper format i.e. 08:42");
+                _CF_error_exists = true;
+            }
+
+        }else {
+            _CF_onError(_CF_this, "Time", _CF_this['Time'].value, "You must enter a time in the proper format i.e. 08:42");
+            _CF_error_exists = true;
+        }
+
+
+        //display error messages and return success
+        if( _CF_error_exists )
+        {
+            if( _CF_error_messages.length > 0 )
+            {
+                // show alert() message
+                _CF_onErrorAlert(_CF_error_messages);
+                // set focus to first form error, if the field supports js focus().
+                if( _CF_this[_CF_FirstErrorField].type == "text" )
+                    { _CF_this[_CF_FirstErrorField].focus(); }
+
+            }
+            return false;
+        }else {
+            return true;
+        }
+    }
+//-->
+</script>
+
+<script type="text/javascript">
+if (window.ColdFusion) ColdFusion.required['Time']=true;
+</script>
+<script type="text/javascript">
+<!--
+_CF_checktripPlanner = function(_CF_this)
+{
+        //reset on submit
+        _CF_error_exists = false;
+        _CF_error_messages = new Array();
+        _CF_error_fields = new Object();
+        _CF_FirstErrorField = null;
+
+        //form element Time required check
+        if( _CF_hasValue(_CF_this['Time'], "TEXT", false ) )
+        {
+            //form element Time 'REGEX' validation checks
+            if (!_CF_checkregex(_CF_this['Time'].value, /^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$/, true))
+            {
+                _CF_onError(_CF_this, "Time", _CF_this['Time'].value, "You must enter a time in the proper format i.e. 08:42");
+                _CF_error_exists = true;
+            }
+
+        }else {
+            _CF_onError(_CF_this, "Time", _CF_this['Time'].value, "You must enter a time in the proper format i.e. 08:42");
+            _CF_error_exists = true;
+        }
+
+
+        //display error messages and return success
+        if( _CF_error_exists )
+        {
+            if( _CF_error_messages.length > 0 )
+            {
+                // show alert() message
+                _CF_onErrorAlert(_CF_error_messages);
+                // set focus to first form error, if the field supports js focus().
+                if( _CF_this[_CF_FirstErrorField].type == "text" )
+                    { _CF_this[_CF_FirstErrorField].focus(); }
+
+            }
+            return false;
+        }else {
+            return true;
+        }
+    }
+//-->
+</script>
+</head>
+<body>
+	<div id="container-outer">
+
+       <div id="container">
+         
+         <div id="header">
+            <div id="headerlogo_NEW"><a href="http://www.wmata.com/"><img src="./fares_files/header-metro-logo_new.png" alt="WMATA" border="0"></a></div>
+            <div class="headstyle1_new">
+                <div class="headstyle-left">
+                   
+                    
+                </div>
+                <div class="headstyle-right">
+                    <form action="http://search.wmata.com/search" method="get">
+                        <input type="hidden" name="site" value="default_collection">
+                        <input type="hidden" name="client" value="default_frontend">
+                        <input type="hidden" name="proxystylesheet" value="default_frontend">
+                        <input type="hidden" name="output" value="xml_no_dtd">
+                        <label for="searchbox"><span class="skip">Search</span><input type="text" name="q" value="" id="searchbox" alt="search" title="search" style="background-image:url(/img/header-search2.gif?);" class="form-watermark"></label>
+                        
+                        &nbsp;<input type="image" src="./fares_files/button_go.gif" alt="Go">
+                    </form>
+                </div>
+            </div>
+            <div class="skiplinks">
+               <a href="http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm#maincontent">Skip to main content</a>
+               
+               <a href="http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm#secondarynav">Skip to secondary navigation</a>
+               
+           </div>
+           <div class="headstyle2">
+               
+
+            <ul class="header-nav superfish">
+               <li class="top">
+                  <a href="http://www.wmata.com/index.cfm" class="fixTopNav"><img src="./fares_files/hb-home-off.gif" alt=""><span>Home--</span></a>	</li>
+
+                  <li class="top multi">
+                      <a href="http://www.wmata.com/rail/" class="fixTopNav"><img src="./fares_files/hb-rail-off.gif" alt=""><span>Rail</span></a>
+                      <ul style="display: none; visibility: hidden;">
+                         <li><a href="http://www.wmata.com/rail/maps/map.cfm?">Maps</a></li>
+                         <li><a href="http://www.wmata.com/rider_tools/metro_service_status/rail_Bus.cfm?">Alerts &amp; Advisories</a></li>   
+                         <li><a href="http://www.wmata.com/rail/stations.cfm">Stations</a></li>     
+                         
+                         <li><a href="http://www.wmata.com/rail/parking/">Parking</a></li>
+                         <li><a href="http://www.wmata.com/rail/service_reports/viewPage_update.cfm">Daily Service Reports</a></li>
+                         <li><a href="http://www.wmata.com/rail/elevators_escalators/">Elevators &amp; Escalators </a></li>
+                         <li><a href="http://www.wmata.com/rail/trackwork.cfm">Weekend Track Work </a></li>			
+                     </ul>
+                 </li>
+                 
+                 <li class="top multi">
+                  <a href="http://www.wmata.com/bus/" class="fixTopNav"><img src="./fares_files/hb-bus-off.gif" alt="" src2="/img/hb-bus-hover.gif"><span>Bus</span></a>
+                  <ul style="display: none; visibility: hidden;">
+                     <li><a href="http://www.wmata.com/bus/maps/">Maps</a></li>
+                     <li><a href="http://www.wmata.com/bus/timetables/">Timetables</a></li>
+                     <li><a href="http://www.wmata.com/rider_tools/metro_service_status/rail_Bus.cfm?">Alerts &amp; Advisories</a></li> 
+                     
+                     <li><a href="http://www.wmata.com/bus/transfers.cfm">Transfers</a></li>
+                 </ul>
+             </li>
+
+             <li class="top multi sfHover">
+              <a href="http://www.wmata.com/accessibility/" class="fixTopNav"><img src="http://www.wmata.com/img/hb-access-hover.gif" alt="" src2="/img/hb-access-off.gif"><span>Accessibility</span></a>
+              <ul style="display: block; visibility: visible;">
+                 <li><a href="http://www.wmata.com/accessibility/metrorail.cfm">Metrorail</a></li>
+                 <li><a href="http://www.wmata.com/accessibility/metrobus.cfm">Metrobus</a></li>
+                 <li><a href="http://www.wmata.com/accessibility/advocacy_policy/metro_accessible.cfm">Learn How to Use Metro</a></li>
+                 <li><a href="http://www.wmata.com/accessibility/metroaccess_service/">MetroAccess</a></li>
+                 <li><a href="http://www.wmata.com/accessibility/metroaccess_eligibility.cfm">Eligibility for Paratransit / Reduced Fare</a></li>
+                 
+                 <li><a href="http://www.wmata.com/accessibility/free_resources.cfm">Accessibility Resources</a></li>
+                 <li><a href="http://www.wmata.com/accessibility/advocacy_policy/">Accessibility Advisory Committee</a></li>
+             </ul>
+         </li>
+         
+         <li class="top multi">
+          <a href="http://www.wmata.com/getting_around/" class="fixTopNav"><img src="./fares_files/hb-ga-off.gif" alt=""><span>Getting Around</span></a>
+          <ul style="display: none; visibility: hidden;">
+             <li><a href="http://www.wmata.com/getting_around/new_metro/">Getting to Metro</a></li>											            
+             <li><a href="http://www.wmata.com/getting_around/visitor_info/">Visitor Information</a></li>
+             <li><a href="http://www.wmata.com/getting_around/language_assistance.cfm">Language Assistance</a></li>
+             <li><a href="http://www.wmata.com/getting_around/faregates.cfm">Faregates</a></li>
+             <li><a href="http://www.wmata.com/getting_around/metro_events/venues.cfm">Metro to Events</a></li>
+             <li><a href="http://www.wmata.com/getting_around/commuter_tips/">Commuter Tips</a></li>
+             <li><a href="http://www.wmata.com/getting_around/regional_transit.cfm">Regional Transportation</a></li>
+             <li><a href="http://www.wmata.com/getting_around/alt_trans/">Alternate Transportation</a></li>
+             <li><a href="http://www.wmata.com/getting_around/snow.cfm">Severe Weather</a></li>
+             <li><a href="http://www.wmata.com/getting_around/safety_security/">Safety &amp; Security</a></li>
+             <li><a href="http://www.wmata.com/getting_around/bike_ride/">Bikes and Metro</a></li>
+         </ul>
+     </li>
+
+     <li class="top multi">
+      <a href="http://www.wmata.com/fares/" class="fixTopNav"><img src="./fares_files/hb-fares-off.gif" alt="" src2="/img/hb-fares-hover.gif"><span>Fares</span></a>
+      <ul style="display: none; visibility: hidden;">
+         <li><a href="http://www.wmata.com/fares/metrorail.cfm">Metrorail</a></li>
+         <li><a href="http://www.wmata.com/fares/metrobus.cfm">Metrobus</a></li>
+         <li><a href="http://www.wmata.com/fares/smartrip/">SmarTrip®</a></li>
+         <li><a href="http://www.wmata.com/fares/reduced.cfm">Reduced Fare Program</a></li>
+         <li><a href="http://www.wmata.com/fares/purchase/passes.cfm">Pass &amp; Farecard Options</a></li>
+         <li><a href="http://www.wmata.com/fares/purchase/store/">Online Fare Purchases</a></li>
+         <li><a href="http://www.wmata.com/fares/purchase/vending.cfm">Vending Machines</a></li>
+         <li><a href="http://www.wmata.com/fares/purchase/where.cfm">Sales Locations</a></li>
+         <li><a href="http://www.wmata.com/fares/purchase/refunds.cfm">Refunds &amp; Exchanges</a></li>
+     </ul>
+ </li>
+
+ <li class="top multi">
+  <a href="http://www.wmata.com/rider_tools/" class="fixTopNav"><img src="./fares_files/hb-ridertools-on.gif" alt=""><span>Rider Tools</span></a>
+  <ul style="display: none; visibility: hidden;">
+     <li><a href="http://www.wmata.com/rider_tools/tripplanner/tripplanner_form_solo.cfm">Trip Planner</a></li>
+     
+     <li><a href="http://www.wmata.com/rider_tools/metro_service_status/rail_Bus.cfm?">Alerts &amp; Advisories</a></li>    
+     <li><a href="https://elstat.wmata.com/">ELstat</a></li>
+     <li><a href="http://www.wmata.com/rider_tools/metro_service_status/elevator_escalator.cfm">Elevator/Escalator Status</a></li>		
+     <li><a href="http://www.wmata.com/rider_tools/pids/real_time_arrivals.cfm">Next Train Arrivals</a></li>
+     <li><a href="http://www.wmata.com/rider_tools/nextbus/arrivals.cfm">Next Bus Arrivals</a></li>
+     <li><a href="http://www.wmata.com/rider_tools/servicenearby/index.cfm">Service Nearby</a></li>
+     <li><a href="http://www.wmata.com/rider_tools/ealerts/">MetroAlerts</a></li>
+     <li><a href="http://www.wmata.com/rider_tools/mobile_services.cfm">Mobile Services</a></li>
+     <li><a href="http://www.wmata.com/rider_tools/calculator/calculator.cfm">Savings Calculator</a></li>
+     <li><a href="http://www.wmata.com/rider_tools/developer_resources.cfm">Developer Resources</a></li>
+ </ul>
+</li>
+
+<li class="top">
+  <a href="http://www.wmata.com/about_metro/" class="fixTopNav"><img src="./fares_files/hb-about-off.gif" alt=""><span>About Metro</span></a>
+  <ul style="display: none; visibility: hidden;">			
+     <li><a href="http://www.wmata.com/about_metro/board_of_directors/">Board of Directors</a></li>
+     <li><a href="http://www.wmata.com/about_metro/general_manager/index.cfm?">General Manager</a></li>
+     
+     
+     <li><a href="http://www.wmata.com/momentum/index.cfm">Strategic Plan</a></li>
+     <li><a href="http://www.wmata.com/about_metro/scorecard/index.cfm?">Scorecard</a></li>
+     <li><a href="http://www.wmata.com/about_metro/inspector_general/">Inspector General</a></li>
+     <li><a href="http://www.wmata.com/careers/index.cfm?">Careers</a></li>
+     <li><a href="http://www.wmata.com/about_metro/transit_police/">Transit Police</a></li>
+     <li><a href="http://www.wmata.com/about_metro/news/newsroom.cfm">Newsroom</a></li>
+     
+     
+     <li><a href="http://www.wmata.com/about_metro/faqs.cfm">Questions &amp; Answers</a></li>
+     <li><a href="http://www.wmata.com/about_metro/riders_advisory_council/">Riders' Advisory Council</a></li>
+     <li><a href="http://www.wmata.com/about_metro/public_rr.cfm?">Public Records &amp; Reports</a></li>			
+     <li><a href="http://www.wmata.com/about_metro/planning_dev.cfm">Planning &amp; Development</a></li>
+     <li><a href="http://www.wmata.com/about_metro/incidents_investigations.cfm?">Safety Oversight</a></li>
+     <li><a href="http://www.wmata.com/stimulus/index.cfm?nocache">Stimulus Program</a></li>
+     <li><a href="http://www.wmata.com/about_metro/civil_rights.cfm">Civil Rights - Title VI</a></li>
+     <li><a href="http://www.wmata.com/about_metro/lost_found">Lost &amp; Found</a></li>
+     <li><a href="http://www.wmata.com/about_metro/contact.cfm">Contact Metro</a></li>						
+ </ul>
+ 
+</li></ul>
+
+</div>			</div>
+
+
+<div id="sandbox">
+    
+    <div id="internal-col1">
+       
+       <a name="secondarynav" id="secondarynav"></a>
+       <div id="internal-box1">
+          <div id="internal-box1-inner">
+             <ul class="left-nav superfish">	
+              <li class="top" id="leftMenu_fares"><a href="http://www.wmata.com/rider_tools/"><span style="color: #0a94d6; font-size: 120% !important; font-weight: bold; margin-bottom: 3px; margin-left: 0px">Rider Tools</span></a></li>	
+              <li class="top on" id="leftMenu_tripplanner"><a href="http://www.wmata.com/rider_tools/tripplanner/tripplanner_form_solo.cfm"><span>Trip Planner</span></a></li>
+
+              <li class="top" id="leftMenu_metro_service_status"><a href="http://www.wmata.com/rider_tools/metro_service_status/rail_bus.cfm?nocache"><span>Alerts &amp; Advisories</span></a></li>
+              <li class="top" id="leftMenu_metro_service_status2"><a href="https://elstat.wmata.com/" target="_blank"><span>ELstat</span></a></li>
+              <li class="top" id="leftMenu_metro_service_status2"><a href="http://www.wmata.com/rider_tools/metro_service_status/elevator_escalator.cfm?nocache"><span>Elevator/Escalator Status</span></a></li>
+              <li class="top" id="leftMenu_real_time_arrivals"><a href="http://www.wmata.com/rider_tools/pids/real_time_arrivals.cfm"><span>Next Train Arrivals</span></a></li>
+              <li class="top multi" id="leftMenu_next_bus_arrivals">
+                <a href="http://www.wmata.com/rider_tools/nextbus/arrivals.cfm"><span>Next Bus Arrivals</span></a>
+                <ul style="display: none; visibility: hidden;">
+                  <li><a href="http://www.wmata.com/rider_tools/nextbus/about_nextbus.cfm">About Next Bus</a></li>
+                  <li><a href="http://www.wmata.com/rider_tools/nextbus/faq.cfm">Frequently Asked Questions</a></li>
+                  <li><a href="http://wmata.nextbus.com/customStopSelector/adaRoute.jsp?a=wmata&cssFile=http://www.wmata.com/css/nextbus.css?nocache">Accessible Version</a></li>
+              </ul>
+          </li>
+          <li class="top" id="leftMenu_service_nearby"><a href="http://www.wmata.com/rider_tools/servicenearby/index.cfm"><span>Service Nearby</span></a></li>
+          
+          <li class="top multi" id="leftMenu_ealerts">
+            <a href="http://www.wmata.com/rider_tools/ealerts/"><span>MetroAlerts</span></a>
+            <ul style="display: none; visibility: hidden;">
+              <li><a href="http://www.wmata.com/rider_tools/ealerts/eAlerts_help.cfm">MetroAlerts Help</a></li>
+              <li><a href="http://www.wmata.com/rider_tools/metro_service_status/rail_bus.cfm?">RSS Feeds</a></li>
+              <li><a href="http://www.wmata.com/rider_tools/ealerts/disclaimer.cfm">Disclaimer</a></li>
+          </ul>
+      </li>
+      <li class="top" id="leftMenu_mobile_services"><a href="http://www.wmata.com/rider_tools/mobile_services.cfm"><span>Mobile Services</span></a></li>
+      <li class="top" id="leftMenu_savings_calculator"><span><a href="http://www.wmata.com/rider_tools/calculator/calculator.cfm">Savings Calculator</a></span></li>
+      <li class="top" id="leftMenu_developer_resources"><span><a href="http://www.wmata.com/rider_tools/developer_resources.cfm">Developer Resources</a></span></li>
+  </ul>
+
+  <ul class="skiplinks">
+    <li><a href="http://www.wmata.com/index.cfm">Home</a></li>
+    <li><a href="http://www.wmata.com/rail/">Rail</a></li>
+    <li><a href="http://www.wmata.com/bus/">Bus</a></li>
+    <li><a href="http://www.wmata.com/accessibility/">Accessibility</a></li>
+    <li><a href="http://www.wmata.com/getting_around/">Getting Around</a></li>
+    <li><a href="http://www.wmata.com/fares/">Fares</a></li>
+
+    <li><a href="http://www.wmata.com/about_metro/">About Metro</a></li>
+    <li><a href="http://www.wmata.com/business/index.cfm">Business with Metro</a></li>
+    <li><a href="http://www.wmata.com/careers/">Careers</a></li>
+    <li><a href="http://www.wmata.com/community_outreach//">Community Outreach</a></li>
+</ul>
+
+
+</div>
+<div id="internal-box1-foot"></div>
+</div>
+
+<div class="ad-vertical">
+  <div class="ad_store_top">
+     <div class="ad_store_mid">
+       
+       <a href="http://www.wmata.com/tile_rotator/redirect.cfm?BanID=161&target=http://www.facebook.com/metroforward"><img src="./fares_files/facebook-house-ad2.png" border="0" alt="Facebook"></a>
+       
+   </div>
+   <div class="ad_store_bottom"></div>
+</div>
+</div>
+
+<div class="ad-vertical">
+  <div class="ad-scaper-google">
+     <div class="ad-scaper-google-inner">
+         <script type="text/javascript"><!--
+         google_ad_client = "pub-9206482252431813";
+         /* 160x600, created 11/19/08 */
+         google_ad_slot = "3642718954";
+         google_ad_width = 160;
+         google_ad_height = 600;
+//-->
+</script>
+<script type="text/javascript" src="./fares_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px"><ins id="aswift_0_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:160px"><iframe allowtransparency="true" frameborder="0" height="600" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="160" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+</div>
+<div class="ad-scaper-google-foot"></div>
+</div>
+</div>
+
+</div>
+
+<div id="internal-col2">
+   <div class="internal-box2">
+      <div class="internal-box2-inner">
+          <a name="maincontent"></a>
+
+
+
+          <!-- content -->
+
+          <h1>Trip Planner</h1>
+
+          <p>
+           <!-- 777: Ballston //--> 
+
+
+           <a name="top"></a>
+
+
+
+
+
+           <script type="text/javascript">
+           $(document).ready(function() {
+              $("ul.header-nav").superfish();
+              $("#leftMenu_stations").addClass('on');
+              
+          });
+           </script>
+
+           <!-- new trip res js! -->
+           <script type="text/javascript">
+           $(document).ready(function(){
+	// show/hide top module
+	$('.collapse').toggle(
+		function(){
+			var link = $(this);
+			link.parent().next('.results').slideUp(function() {
+				link.text('[+] Expand');
+				link.html('<img src=images/plus4.png>');
+			});
+		},
+		function() {
+			var link = $(this);
+			link.parent().next('.results').slideDown(function() {
+				link.text('[-] Collapse'); 
+				link.html('<img src=images/minus4.png>');
+			});
+		}
+       );
+});
+           </script>
+
+
+
+
+
+           
+           <a href="http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm#itin" class="skip">skip disclaimer</a>    
+           
+
+
+       </p><p align="right">
+       
+       <a href="http://www.wmata.com/rider_tools/tripplanner/tripplanner_form_solo.cfm">Modify itinerary</a> |
+       
+       <a href="./fares_files/fares.html">More options</a> |
+       <a href="javascript:window.print();">Print</a>
+       
+   </p>
+
+
+
+
+
+
+
+   <p>Itineraries shown below may not account for temporary delays or detours caused by unexpected service disruptions, scheduled track work, construction or special events. Alerts and advisories that may affect your trip will be displayed below your itinerary.</p>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <a name="itin"></a>
+
+
+
+
+
+   <p align="center" style=" font-size:16px;">From 
+
+    <b>
+
+
+
+
+        <!-- mp_trans_disable_start -->BALLSTON<!-- mp_trans_disable_end -->
+    </b>
+
+    to 
+
+    <b> 
+
+
+        <!-- mp_trans_disable_start -->DUPONT CIRCLE<!-- mp_trans_disable_end --></b>
+        on <b>11/25/2012</b>
+    </p>
+    
+    <div class="trip_planner tr">
+        <div class="trip_planner_btm t_res">
+            <div class="trip_planner_inner">
+                <div class="gradient t_results">
+                    
+                    <div id="top_heading"> <h2>Itinerary 1</h2>
+                     &nbsp;<i> 
+                     
+
+                     <font color="#666666" size="-1">&nbsp;(approx 27 min transit)</font>
+                 </i>
+                 <a class="collapse" href="http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm#"><img src="./fares_files/minus4.png" alt="[-] Collapse" title="[-] Collapse"></a>
+             </div>
+             
+             
+             <div class="results">
+                <ul class="ltinerary">
+
+                  
+                  
+                    <li>
+                        
+
+                        <div class="dots">
+                            <div title="This contains the various legs of the trip for itinerary number 1.">
+                               
+                             
+                               
+                                
+                                
+                                <h3><!-- mp_trans_disable_start -->Rail<!-- mp_trans_disable_end --> Departs from</h3>
+
+                                
+                                
+                                
+                                <p><span>
+                                  
+                                  
+                                   <a href="http://www.wmata.com/rail/station_detail.cfm?station_id=99">
+                                    
+                                      <!-- mp_trans_disable_start -->BALLSTON METRO<!-- mp_trans_disable_end --></a></span><br>
+                                      <span class="strong">at 3:55pm 
+                                        
+                                      </span></p>
+                                  </div>
+                                  
+                                  <div>
+                                   
+                                      <h3>Board</h3>
+                                      
+                                      
+                                      <p><span>
+                                         <b style="color:#EF9A31">ORANGE LINE</b>
+                                         <img src="./fares_files/icon-marble-orange.gif" alt="ORANGE LINE" align="absmiddle"> Rail</span><br>
+                                         <i>towards </i>
+                                         <span class="strong"><!-- mp_trans_disable_start -->NEW CARROLLTON<!-- mp_trans_disable_end -->
+                                          
+                                          
+                                          
+                                         </span></p>
+                                         
+                                         
+                                         
+                                     </div>
+                                     
+                                     
+                                     <!-- Arrive TD -->
+
+                                     <div>
+                                      <h3>Arrive</h3>
+                                      
+                                      
+                                      
+                                      <p><span>
+                                        
+                                          
+                                        
+                                        <a href="http://www.wmata.com/rail/station_detail.cfm?station_id=1">
+                                            
+                                           
+                                          <!-- mp_trans_disable_start -->METRO CENTER METRO STATION<!-- mp_trans_disable_end --> </a></span><br>
+                                          at <span class="strong">4:10pm 
+                                          
+                                          
+                                      </span></p>
+                                      
+                                  </div>
+                              </div>
+                          </li>
+                          
+                          
+                          
+                          
+                          <li>
+                            
+
+                            <div class="dots">
+                                <div title="This contains the various legs of the trip for itinerary number 1.">
+                                   
+                                 
+                                   
+                                    
+                                    
+                                    <h3><!-- mp_trans_disable_start -->Rail<!-- mp_trans_disable_end --> Departs from</h3>
+
+                                    
+                                    
+                                    
+                                    <p><span>
+                                      
+                                      
+                                       <a href="http://www.wmata.com/rail/station_detail.cfm?station_id=1">
+                                        
+                                          <!-- mp_trans_disable_start -->METRO CENTER METRO STATION<!-- mp_trans_disable_end --></a></span><br>
+                                          <span class="strong">at 4:18pm 
+                                            
+                                          </span></p>
+                                      </div>
+                                      
+                                      <div>
+                                       
+                                          <h3>Board</h3>
+                                          
+                                          
+                                          <p><span>
+                                             <b style="color:#E72C31">RED LINE</b>
+                                             <img src="./fares_files/icon-marble-red.gif" alt="RED LINE" align="absmiddle"> Rail</span><br>
+                                             <i>towards </i>
+                                             <span class="strong"><!-- mp_trans_disable_start -->SHADY GROVE<!-- mp_trans_disable_end -->
+                                              
+                                              
+                                              
+                                             </span></p>
+                                             
+                                             
+                                             
+                                         </div>
+                                         
+                                         
+                                         <!-- Arrive TD -->
+
+                                         <div>
+                                          <h3>Arrive</h3>
+                                          
+                                          
+                                          
+                                          <p><span>
+                                            
+                                              
+                                            
+                                            <a href="http://www.wmata.com/rail/station_detail.cfm?station_id=6">
+                                                
+                                               
+                                              <!-- mp_trans_disable_start -->DUPONT CIRCLE METRO STATION<!-- mp_trans_disable_end --> </a></span><br>
+                                              at <span class="strong">4:22pm 
+                                              
+                                              
+                                          </span></p>
+                                          
+                                      </div>
+                                  </div>
+                              </li>
+                              
+                              
+                              
+                              
+                          </ul>
+                          
+                          
+                          
+                          <div style="font-size:11px; background-color:white; padding-left:10px; padding-bottom:5px; color:gray">
+                            &nbsp;
+                            <br>
+                            
+                            
+                            <img src="./fares_files/alert-icon.gif" alt="" align="absbottom"> <b>There are active advisories that may affect your trip:
+                        </b>&nbsp;&nbsp; 
+                        
+                        
+                        
+                        
+                        <a href="http://www.wmata.com/rider_tools/metro_service_status/rail_bus.cfm?c#advisories" target="_blank">View advisories</a>
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                    
+                    
+                    
+                    <div style="font-size:11px; background-color:white; padding-bottom:5px; color:gray;">
+                        <br> 
+                        <img src="./fares_files/HR2.gif">
+                        
+                    </div> 
+                    <div class="fare_and_email">
+                     <div class="st_fare">
+                        <span class="price">$  2.05</span>
+                        <span class="stf"><a href="http://www.wmata.com/fares/smartrip/" target="_blank">SmarTrip Fare</a></span>
+                    </div>
+                    
+                    <div class="st_fare_mid">
+                        <ul class="fares">
+                            
+
+                            <li><span class="strong">$  1.40</span> SmarTrip (Senior/Disabled/Medicare)</li>
+                            <li><span class="strong">$  3.05</span> Cash / Farecard </li>
+                            <li><span class="strong">$  1.90</span> Cash / Farecard (Senior/Disabled/Medicare)</li>
+                            <li><span style="font-size:9px;">(Only Cash &amp; SmarTrip are accepted on Buses)</span></li>
+                            
+                        </ul>
+                    </div>
+                    
+                    
+                    <div class="email" style="background: url(images/email_bg.gif); width:223px; height:88px">
+                        <form name="CFForm_1" id="CFForm_1" action="http://www.wmata.com/rider_tools/tripplanner/parseplanTrip_emailItin.cfm" method="post" class="email_f" onsubmit="return _CF_checkCFForm_1(this)">
+                           <fieldset>
+                             
+                            <input type="hidden" name="Itin_header" value="Traveling from  BALLSTON to  DUPONT CIRCLE on 11/25/2012">
+                            <input type="hidden" name="Itin" value="Rail: Departs from BALLSTON METRO at 3:55pm Take ORANGE LINE Rail towards &lt;!-- mp_trans_disable_start --&gt;NEW CARROLLTON&lt;!-- mp_trans_disable_end --&gt;
+                            » METRO CENTER METRO STATION at 4:10pm Rail: Departs from METRO CENTER METRO STATION at 4:18pm Take RED LINE Rail towards &lt;!-- mp_trans_disable_start --&gt;SHADY GROVE&lt;!-- mp_trans_disable_end --&gt;
+                            » DUPONT CIRCLE METRO STATION at 4:22pm &gt;&gt; SMARTRIP FARE: (Senior/Disabled/Medicare): $ 2.05  ($ 1.40)
+                            &gt;&gt; CASH FARE: (Senior/Disabled/Medicare): $ 3.05  ($ 1.90)
+
+                            ">
+                            
+                            <input name="email" id="email" type="text" maxlength="55" class="email_input form-watermark" title="Email itinerary 1" alt="Enter your email">
+                            
+                            
+                            <input class="send_gb" type="image" alt="Send" value="Submit" src="./fares_files/send_gb.gif">
+                            
+                        </fieldset>
+                    </form>
+
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+
+                
+            </div>
+        </div>
+        
+    </div><!-- gradient -->
+</div><!-- trip planner inner -->
+</div><!-- trip planner btm -->
+<div class="clb"></div>
+</div><!-- trip planner -->
+
+<div class="trip_planner tr">
+    <div class="trip_planner_btm t_res">
+        <div class="trip_planner_inner">
+            <div class="gradient t_results">
+                
+                <div id="top_heading"> <h2>Itinerary 2</h2>
+                 &nbsp;<i> 
+                 
+
+                 <font color="#666666" size="-1">&nbsp;(approx 32 min transit)</font>
+             </i>
+             <a class="collapse" href="http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm#"><img src="./fares_files/minus4.png" alt="[-] Collapse" title="[-] Collapse"></a>
+         </div>
+         
+         
+         <div class="results">
+            <ul class="ltinerary">
+
+              
+              
+                <li>
+                    
+
+                    <div class="dots">
+                        <div title="This contains the various legs of the trip for itinerary number 2.">
+                           
+                         
+                           
+                            
+                            
+                            <h3><!-- mp_trans_disable_start -->Rail<!-- mp_trans_disable_end --> Departs from</h3>
+
+                            
+                            
+                            
+                            <p><span>
+                              
+                              
+                               <a href="http://www.wmata.com/rail/station_detail.cfm?station_id=99">
+                                
+                                  <!-- mp_trans_disable_start -->BALLSTON METRO<!-- mp_trans_disable_end --></a></span><br>
+                                  <span class="strong">at 3:55pm 
+                                    
+                                  </span></p>
+                              </div>
+                              
+                              <div>
+                               
+                                  <h3>Board</h3>
+                                  
+                                  
+                                  <p><span>
+                                     <b style="color:#EF9A31">ORANGE LINE</b>
+                                     <img src="./fares_files/icon-marble-orange.gif" alt="ORANGE LINE" align="absmiddle"> Rail</span><br>
+                                     <i>towards </i>
+                                     <span class="strong"><!-- mp_trans_disable_start -->NEW CARROLLTON<!-- mp_trans_disable_end -->
+                                      
+                                      
+                                      
+                                     </span></p>
+                                     
+                                     
+                                     
+                                 </div>
+                                 
+                                 
+                                 <!-- Arrive TD -->
+
+                                 <div>
+                                  <h3>Arrive</h3>
+                                  
+                                  
+                                  
+                                  <p><span>
+                                    
+                                      
+                                    
+                                    <a href="http://www.wmata.com/rail/station_detail.cfm?station_id=38">
+                                        
+                                       
+                                      <!-- mp_trans_disable_start -->FARRAGUT WEST METRO STATION<!-- mp_trans_disable_end --> </a></span><br>
+                                      at <span class="strong">4:08pm 
+                                      
+                                      
+                                  </span></p>
+                                  
+                              </div>
+                          </div>
+                      </li>
+                      
+                      
+                      
+                      
+                      
+                      <!-- Middle Walk -->
+                      
+                      
+                      
+                      
+                      <li>
+                         <p><span class="res">
+                            <b>To get to next stop:</b> 
+                            <i>
+                               
+                               
+                               <!-- mp_trans_disable_start -->Walk a short distance E on I St NW.<!-- mp_trans_disable_end --> 
+                               
+                           </i>
+                           
+                       </span></p>
+                       
+                   </li><li>
+                   
+
+                   <div class="dots">
+                    <div title="This contains the various legs of the trip for itinerary number 2.">
+                       
+                     
+                       
+                        
+                        
+                        <h3><!-- mp_trans_disable_start -->Bus<!-- mp_trans_disable_end --> Departs from</h3>
+
+                        
+                        
+                        
+                        <p><span>
+                          
+                           
+                          <!-- mp_trans_disable_start -->NW 17TH ST &amp; NW I ST<!-- mp_trans_disable_end --></span><br>
+                          <span class="strong">at 4:19pm 
+                            
+                          </span></p>
+                      </div>
+                      
+                      <div>
+                       
+                          <h3>Board</h3>
+                          
+                          
+                          <!-- *********************************************************************************************************************************************************** /bus/timetables/dc/42.pdf -->
+
+                          
+                          <p><span><a href="http://www.wmata.com/bus/timetables/dc/42.pdf" target="_blank" title="Click here to view bus schedule." alt="Click here to view bus schedule."><!-- mp_trans_disable_start -->42 BUS<!-- mp_trans_disable_end --></a></span><br>
+                             
+                             
+                             <a href="http://www.wmata.com/bus/timetables/dc/42.pdf" target="_blank"><img src="./fares_files/pdficon_small.gif" title="Click here to view bus schedule." alt="Click here to view bus schedule." border="0" align="absmiddle"></a> 
+
+                             towards 
+                             
+                             <span class="strong"><!-- mp_trans_disable_start -->MT PLEASANT VIA ADAMS MORGAN<!-- mp_trans_disable_end --></span></p>
+                             
+                         </div>
+                         
+                         
+                         <!-- Arrive TD -->
+
+                         <div>
+                          <h3>Arrive</h3>
+                          
+                          
+                          
+                          <p><span>
+                            
+                              
+                              
+                              <!-- mp_trans_disable_start -->NW CONNECTICUT AV &amp; Q ST NW<!-- mp_trans_disable_end --> </span><br>
+                              at <span class="strong">4:27pm 
+                              
+                              
+                          </span></p>
+                          
+                      </div>
+                  </div>
+              </li>
+              
+              
+              
+              
+              <li> 
+                 <p> <span class="res">Walk 0.06</span> mile <span class="res">W</span> to 
+                     <span style="font-weight:bold">	
+                        
+                       
+                        <!-- mp_trans_disable_start -->DUPONT CIRCLE<!-- mp_trans_disable_end -->
+                    </span> &nbsp;&nbsp;&nbsp;
+                    
+                    
+                    
+                    
+                    
+                    <br>
+
+                    <a class="gd" href="http://www.wmata.com/rider_tools/tripplanner/walking_directions.cfm?Startlat=38.911003&Startlong=-77.044021&Endlat=38.911115&Endlong=-77.044865&Starttext=NW%20CONNECTICUT%20AV%20%2C%20Q%20ST%20NW&Endtext=DUPONT%20CIRCLE&FinalWalkOriginStopID=13078&Date=11/25/2012&Time=1627">Get directions</a>
+                </p></li>
+            </ul>
+            
+            
+            
+            <div style="font-size:11px; background-color:white; padding-left:10px; padding-bottom:5px; color:gray">
+                &nbsp;
+                <br>
+                
+                
+                <img src="./fares_files/alert-icon.gif" alt="" align="absbottom"> <b>There are active advisories that may affect your trip:
+            </b>&nbsp;&nbsp; 
+            
+            
+            
+            
+            <a href="http://www.wmata.com/rider_tools/metro_service_status/rail_bus.cfm?c#advisories" target="_blank">View advisories</a>
+            
+            
+            
+            
+        </div>
+        
+        
+        
+        
+        <div style="font-size:11px; background-color:white; padding-bottom:5px; color:gray;">
+            <br> 
+            <img src="./fares_files/HR2.gif">
+            
+        </div> 
+        <div class="fare_and_email">
+         <div class="st_fare">
+            <span class="price">$  3.10</span>
+            <span class="stf"><a href="http://www.wmata.com/fares/smartrip/" target="_blank">SmarTrip Fare</a></span>
+        </div>
+        
+        <div class="st_fare_mid">
+            <ul class="fares">
+                
+
+                <li><span class="strong">$  1.55</span> SmarTrip (Senior/Disabled/Medicare)</li>
+                <li><span class="strong">$  4.80</span> Cash / Farecard </li>
+                <li><span class="strong">$  2.65</span> Cash / Farecard (Senior/Disabled/Medicare)</li>
+                <li><span style="font-size:9px;">(Only Cash &amp; SmarTrip are accepted on Buses)</span></li>
+                
+            </ul>
+        </div>
+        
+        
+        <div class="email" style="background: url(images/email_bg.gif); width:223px; height:88px">
+            <form name="CFForm_2" id="CFForm_2" action="http://www.wmata.com/rider_tools/tripplanner/parseplanTrip_emailItin.cfm" method="post" class="email_f" onsubmit="return _CF_checkCFForm_2(this)">
+            	<fieldset>
+                 
+                    <input type="hidden" name="Itin_header" value="Traveling from  BALLSTON to  DUPONT CIRCLE on 11/25/2012">
+                    <input type="hidden" name="Itin" value="Rail: Departs from BALLSTON METRO at 3:55pm Take ORANGE LINE Rail towards &lt;!-- mp_trans_disable_start --&gt;NEW CARROLLTON&lt;!-- mp_trans_disable_end --&gt;
+                    » FARRAGUT WEST METRO STATION at 4:08pm To get to next stop:Walk a short distance E on I St NW. Bus: Departs from NW 17TH ST &amp; NW I ST at 4:19pm Take  &lt;!-- mp_trans_disable_start --&gt;42 BUS&lt;!-- mp_trans_disable_end --&gt; towards &lt;!-- mp_trans_disable_start --&gt;MT PLEASANT VIA ADAMS MORGAN&lt;!-- mp_trans_disable_end --&gt;  » NW CONNECTICUT AV &amp; Q ST NW at 4:27pm Walk 0.06 mile W to DUPONT CIRCLE &gt;&gt; SMARTRIP FARE: (Senior/Disabled/Medicare): $ 3.10  ($ 1.55)
+                    &gt;&gt; CASH FARE: (Senior/Disabled/Medicare): $ 4.80  ($ 2.65)
+
+                    ">
+                    
+                    <input name="email" id="email" type="text" maxlength="55" class="email_input form-watermark" title="Email itinerary 2" alt="Enter your email">
+                    
+                    
+                    <input class="send_gb" type="image" alt="Send" value="Submit" src="./fares_files/send_gb.gif">
+                    
+                </fieldset>
+            </form>
+
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+    </div>
+</div>
+
+</div><!-- gradient -->
+</div><!-- trip planner inner -->
+</div><!-- trip planner btm -->
+<div class="clb"></div>
+</div><!-- trip planner -->
+
+<div class="trip_planner tr">
+    <div class="trip_planner_btm t_res">
+        <div class="trip_planner_inner">
+            <div class="gradient t_results">
+                
+                <div id="top_heading"> <h2>Itinerary 3</h2>
+                 &nbsp;<i> 
+                 
+
+                 <font color="#666666" size="-1">&nbsp;(approx 35 min transit)</font>
+             </i>
+             <a class="collapse" href="http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm#"><img src="./fares_files/minus4.png" alt="[-] Collapse" title="[-] Collapse"></a>
+         </div>
+         
+         
+         <div class="results">
+            <ul class="ltinerary">
+
+              
+              
+                <li>
+                    
+
+                    <div class="dots">
+                        <div title="This contains the various legs of the trip for itinerary number 3.">
+                           
+                         
+                           
+                            
+                            
+                            <h3><!-- mp_trans_disable_start -->Rail<!-- mp_trans_disable_end --> Departs from</h3>
+
+                            
+                            
+                            
+                            <p><span>
+                              
+                              
+                               <a href="http://www.wmata.com/rail/station_detail.cfm?station_id=99">
+                                
+                                  <!-- mp_trans_disable_start -->BALLSTON METRO<!-- mp_trans_disable_end --></a></span><br>
+                                  <span class="strong">at 3:55pm 
+                                    
+                                  </span></p>
+                              </div>
+                              
+                              <div>
+                               
+                                  <h3>Board</h3>
+                                  
+                                  
+                                  <p><span>
+                                     <b style="color:#EF9A31">ORANGE LINE</b>
+                                     <img src="./fares_files/icon-marble-orange.gif" alt="ORANGE LINE" align="absmiddle"> Rail</span><br>
+                                     <i>towards </i>
+                                     <span class="strong"><!-- mp_trans_disable_start -->NEW CARROLLTON<!-- mp_trans_disable_end -->
+                                      
+                                      
+                                      
+                                     </span></p>
+                                     
+                                     
+                                     
+                                 </div>
+                                 
+                                 
+                                 <!-- Arrive TD -->
+
+                                 <div>
+                                  <h3>Arrive</h3>
+                                  
+                                  
+                                  
+                                  <p><span>
+                                    
+                                      
+                                    
+                                    <a href="http://www.wmata.com/rail/station_detail.cfm?station_id=1">
+                                        
+                                       
+                                      <!-- mp_trans_disable_start -->METRO CENTER METRO STATION<!-- mp_trans_disable_end --> </a></span><br>
+                                      at <span class="strong">4:10pm 
+                                      
+                                      
+                                  </span></p>
+                                  
+                              </div>
+                          </div>
+                      </li>
+                      
+                      
+                      
+                      
+                      <li>
+                        
+
+                        <div class="dots">
+                            <div title="This contains the various legs of the trip for itinerary number 3.">
+                               
+                             
+                               
+                                
+                                
+                                <h3><!-- mp_trans_disable_start -->Rail<!-- mp_trans_disable_end --> Departs from</h3>
+
+                                
+                                
+                                
+                                <p><span>
+                                  
+                                  
+                                   <a href="http://www.wmata.com/rail/station_detail.cfm?station_id=1">
+                                    
+                                      <!-- mp_trans_disable_start -->METRO CENTER METRO STATION<!-- mp_trans_disable_end --></a></span><br>
+                                      <span class="strong">at 4:26pm 
+                                        
+                                      </span></p>
+                                  </div>
+                                  
+                                  <div>
+                                   
+                                      <h3>Board</h3>
+                                      
+                                      
+                                      <p><span>
+                                         <b style="color:#E72C31">RED LINE</b>
+                                         <img src="./fares_files/icon-marble-red.gif" alt="RED LINE" align="absmiddle"> Rail</span><br>
+                                         <i>towards </i>
+                                         <span class="strong"><!-- mp_trans_disable_start -->SHADY GROVE<!-- mp_trans_disable_end -->
+                                          
+                                          
+                                          
+                                         </span></p>
+                                         
+                                         
+                                         
+                                     </div>
+                                     
+                                     
+                                     <!-- Arrive TD -->
+
+                                     <div>
+                                      <h3>Arrive</h3>
+                                      
+                                      
+                                      
+                                      <p><span>
+                                        
+                                          
+                                        
+                                        <a href="http://www.wmata.com/rail/station_detail.cfm?station_id=6">
+                                            
+                                           
+                                          <!-- mp_trans_disable_start -->DUPONT CIRCLE METRO STATION<!-- mp_trans_disable_end --> </a></span><br>
+                                          at <span class="strong">4:30pm 
+                                          
+                                          
+                                      </span></p>
+                                      
+                                  </div>
+                              </div>
+                          </li>
+                          
+                          
+                          
+                          
+                      </ul>
+                      
+                      
+                      
+                      <div style="font-size:11px; background-color:white; padding-left:10px; padding-bottom:5px; color:gray">
+                        &nbsp;
+                        <br>
+                        
+                        
+                        <img src="./fares_files/alert-icon.gif" alt="" align="absbottom"> <b>There are active advisories that may affect your trip:
+                    </b>&nbsp;&nbsp; 
+                    
+                    
+                    
+                    
+                    <a href="http://www.wmata.com/rider_tools/metro_service_status/rail_bus.cfm?c#advisories" target="_blank">View advisories</a>
+                    
+                    
+                    
+                    
+                </div>
+                
+                
+                
+                
+                <div style="font-size:11px; background-color:white; padding-bottom:5px; color:gray;">
+                    <br> 
+                    <img src="./fares_files/HR2.gif">
+                    
+                </div> 
+                <div class="fare_and_email">
+                 <div class="st_fare">
+                    <span class="price">$  2.05</span>
+                    <span class="stf"><a href="http://www.wmata.com/fares/smartrip/" target="_blank">SmarTrip Fare</a></span>
+                </div>
+                
+                <div class="st_fare_mid">
+                    <ul class="fares">
+                        
+
+                        <li><span class="strong">$  1.40</span> SmarTrip (Senior/Disabled/Medicare)</li>
+                        <li><span class="strong">$  3.05</span> Cash / Farecard </li>
+                        <li><span class="strong">$  1.90</span> Cash / Farecard (Senior/Disabled/Medicare)</li>
+                        <li><span style="font-size:9px;">(Only Cash &amp; SmarTrip are accepted on Buses)</span></li>
+                        
+                    </ul>
+                </div>
+                
+                
+                <div class="email" style="background: url(images/email_bg.gif); width:223px; height:88px">
+                    <form name="CFForm_3" id="CFForm_3" action="http://www.wmata.com/rider_tools/tripplanner/parseplanTrip_emailItin.cfm" method="post" class="email_f" onsubmit="return _CF_checkCFForm_3(this)">
+                       <fieldset>
+                         
+                        <input type="hidden" name="Itin_header" value="Traveling from  BALLSTON to  DUPONT CIRCLE on 11/25/2012">
+                        <input type="hidden" name="Itin" value="Rail: Departs from BALLSTON METRO at 3:55pm Take ORANGE LINE Rail towards &lt;!-- mp_trans_disable_start --&gt;NEW CARROLLTON&lt;!-- mp_trans_disable_end --&gt;
+                        » METRO CENTER METRO STATION at 4:10pm Rail: Departs from METRO CENTER METRO STATION at 4:26pm Take RED LINE Rail towards &lt;!-- mp_trans_disable_start --&gt;SHADY GROVE&lt;!-- mp_trans_disable_end --&gt;
+                        » DUPONT CIRCLE METRO STATION at 4:30pm &gt;&gt; SMARTRIP FARE: (Senior/Disabled/Medicare): $ 2.05  ($ 1.40)
+                        &gt;&gt; CASH FARE: (Senior/Disabled/Medicare): $ 3.05  ($ 1.90)
+
+                        ">
+                        
+                        <input name="email" id="email" type="text" maxlength="55" class="email_input form-watermark" title="Email itinerary 3" alt="Enter your email">
+                        
+                        
+                        <input class="send_gb" type="image" alt="Send" value="Submit" src="./fares_files/send_gb.gif">
+                        
+                    </fieldset>
+                </form>
+
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
+        </div>
+    </div>
+    
+</div><!-- gradient -->
+</div><!-- trip planner inner -->
+</div><!-- trip planner btm -->
+<div class="clb"></div>
+</div><!-- trip planner -->
+
+
+
+<a name="w"></a> 
+
+
+<script>
+<!--
+var click=0;
+function showStatusMsg(){
+    
+}
+				//-->
+				</script>
+				
+                <a name="bottom"></a>
+                <div id="trip_adjustments">
+                    <div id="ta_btm">
+                        <div id="ta_inner"> 
+                            
+
+
+                            <script language="javascript" src="./fares_files/ChgMthPopDays.js">
+                            </script>
+
+
+                            <a name="returnTrip"></a>
+
+                            <div class="time_date_module">
+                                <div class="inner_grad">
+                                    <h2>Plan Return Trip</h2>
+                                    <div class="landingHR" style="height:5px"></div>
+
+                                    <p>To plan a return trip, use the form below.</p>
+
+                                    <form name="tripPlanner" id="tripPlanner" action="http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm" method="post" class="td_frm" onsubmit="return _CF_checktripPlanner(this)">
+                                      <input type="hidden" name="show_email" value="on">
+                                      
+                                      <input type="hidden" name="Minimize" value="T">
+                                      
+                                      <input type="hidden" name="StreetAddressTo" value="Ballston">
+                                      <input type="hidden" name="StreetAddressFrom" value="Dupont Circle">
+                                      <input type="hidden" name="StreetAddressTo_Area" value="">
+                                      <input type="hidden" name="StreetAddressFrom_Area" value="">
+                                      <input type="hidden" name="Mode" value="A">
+                                      <input type="hidden" name="WalkDistance" value="0.75">
+                                      
+                                      
+                                      <fieldset>
+                                        <div class="dt_inner">
+                                            <div id="time_wrap">
+                                                <label>Time</label>
+                                                <select name="ArrDep">
+                                                 <option value="D" selected="">Leaving After
+                                                 </option>
+                                                 <option value="A">Arriving By
+                                                 </option>
+                                             </select>
+
+                                             <input name="Time" id="Time" type="text" value="03:45" maxlength="5" size="5" alt="Enter travel time i.e. 08:42" onblur="if( !_CF_hasValue(this, &#39;TEXT&#39;, false) &amp;&amp; !_CF_checkregex(this.value,/^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$/, true) ){ _CF_onErrorAlert(new Array(&#39;You must enter a time in the proper format i.e. 08:42&#39;)); }"> 
+
+                                             <select name="AMPM">
+                                                 <option value="AM">AM</option>
+                                                 <option value="PM" selected="">PM</option>
+                                             </select>	
+                                         </div>
+
+                                         <div id="date_wrap">
+                                            <label>Date</label>
+                                            
+
+                                            <select name="dateMonth" onchange="updateDays(this.form)">
+                                             <option value="1">
+                                                 Jan</option>
+                                                 <option value="2">
+                                                     Feb</option>
+                                                     <option value="3">
+                                                         Mar</option>
+                                                         <option value="4">
+                                                             Apr</option>
+                                                             <option value="5">
+                                                                 May</option>
+                                                                 <option value="6">
+                                                                     Jun</option>
+                                                                     <option value="7">
+                                                                         Jul</option>
+                                                                         <option value="8">
+                                                                             Aug</option>
+                                                                             <option value="9">
+                                                                                 Sep</option>
+                                                                                 <option value="10">
+                                                                                     Oct</option>
+                                                                                     <option value="11" selected="">
+                                                                                         Nov</option>
+                                                                                         <option value="12">
+                                                                                             Dec</option>
+                                                                                         </select>
+
+                                                                                         <select name="dateDay" onmousedown="updateDays(this.form)">
+                                                                                             
+                                                                                           <option value="1">
+                                                                                               1</option>
+                                                                                               
+                                                                                               <option value="2">
+                                                                                                   2</option>
+                                                                                                   
+                                                                                                   <option value="3">
+                                                                                                       3</option>
+                                                                                                       
+                                                                                                       <option value="4">
+                                                                                                           4</option>
+                                                                                                           
+                                                                                                           <option value="5">
+                                                                                                               5</option>
+                                                                                                               
+                                                                                                               <option value="6">
+                                                                                                                   6</option>
+                                                                                                                   
+                                                                                                                   <option value="7">
+                                                                                                                       7</option>
+                                                                                                                       
+                                                                                                                       <option value="8">
+                                                                                                                           8</option>
+                                                                                                                           
+                                                                                                                           <option value="9">
+                                                                                                                               9</option>
+                                                                                                                               
+                                                                                                                               <option value="10">
+                                                                                                                                   10</option>
+                                                                                                                                   
+                                                                                                                                   <option value="11">
+                                                                                                                                       11</option>
+                                                                                                                                       
+                                                                                                                                       <option value="12">
+                                                                                                                                           12</option>
+                                                                                                                                           
+                                                                                                                                           <option value="13">
+                                                                                                                                               13</option>
+                                                                                                                                               
+                                                                                                                                               <option value="14">
+                                                                                                                                                   14</option>
+                                                                                                                                                   
+                                                                                                                                                   <option value="15">
+                                                                                                                                                       15</option>
+                                                                                                                                                       
+                                                                                                                                                       <option value="16">
+                                                                                                                                                           16</option>
+                                                                                                                                                           
+                                                                                                                                                           <option value="17">
+                                                                                                                                                               17</option>
+                                                                                                                                                               
+                                                                                                                                                               <option value="18">
+                                                                                                                                                                   18</option>
+                                                                                                                                                                   
+                                                                                                                                                                   <option value="19">
+                                                                                                                                                                       19</option>
+                                                                                                                                                                       
+                                                                                                                                                                       <option value="20">
+                                                                                                                                                                           20</option>
+                                                                                                                                                                           
+                                                                                                                                                                           <option value="21">
+                                                                                                                                                                               21</option>
+                                                                                                                                                                               
+                                                                                                                                                                               <option value="22">
+                                                                                                                                                                                   22</option>
+                                                                                                                                                                                   
+                                                                                                                                                                                   <option value="23">
+                                                                                                                                                                                       23</option>
+                                                                                                                                                                                       
+                                                                                                                                                                                       <option value="24">
+                                                                                                                                                                                           24</option>
+                                                                                                                                                                                           
+                                                                                                                                                                                           <option value="25" selected="">
+                                                                                                                                                                                               25</option>
+                                                                                                                                                                                               
+                                                                                                                                                                                               <option value="26">
+                                                                                                                                                                                                   26</option>
+                                                                                                                                                                                                   
+                                                                                                                                                                                                   <option value="27">
+                                                                                                                                                                                                       27</option>
+                                                                                                                                                                                                       
+                                                                                                                                                                                                       <option value="28">
+                                                                                                                                                                                                           28</option>
+                                                                                                                                                                                                           
+                                                                                                                                                                                                           <option value="29">
+                                                                                                                                                                                                               29</option>
+                                                                                                                                                                                                               
+                                                                                                                                                                                                               <option value="30">
+                                                                                                                                                                                                                   30</option>
+                                                                                                                                                                                                                   
+                                                                                                                                                                                                                   <option value="31">
+                                                                                                                                                                                                                       31</option>
+                                                                                                                                                                                                                       
+                                                                                                                                                                                                                   </select>
+
+                                                                                                                                                                                                                   
+                                                                                                                                                                                                                   <select name="dateYear">
+                                                                                                                                                                                                                     
+                                                                                                                                                                                                                     <option value="2012" selected="">2012</option>
+                                                                                                                                                                                                                     <option value="2013">2013</option>
+                                                                                                                                                                                                                     
+                                                                                                                                                                                                                 </select>
+                                                                                                                                                                                                             </div>
+                                                                                                                                                                                                         </div>
+
+                                                                                                                                                                                                         
+                                                                                                                                                                                                         <input id="submit_bb" type="image" alt="Submit" name="submit" value="returnTrip" src="./fares_files/submit_btn_blue.gif">
+                                                                                                                                                                                                     </fieldset>
+                                                                                                                                                                                                     <input type="hidden" name="Time_CFFORMREGEX" value="^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$">
+                                                                                                                                                                                                     <input type="hidden" name="Time_CFFORMREQUIRED" value="You must enter a time in the proper format i.e. 08:42">
+                                                                                                                                                                                                 </form>
+                                                                                                                                                                                                 
+                                                                                                                                                                                             </div><!-- inner grad -->
+                                                                                                                                                                                         </div><!-- time_date module --> 					
+
+
+                                                                                                                                                                                         <script language="javascript" src="./fares_files/ChgMthPopDays.js">
+                                                                                                                                                                                         </script>
+
+
+                                                                                                                                                                                         <a name="returnTrip"></a>
+
+                                                                                                                                                                                         <div class="time_date_module right_module">
+                                                                                                                                                                                            <div class="inner_grad">
+                                                                                                                                                                                                <h2>Adjust Trip Date/Time</h2>
+                                                                                                                                                                                                <div class="landingHR" style="height:5px"></div>
+
+                                                                                                                                                                                                <p>To travel at a different time, use the form below.</p>
+
+                                                                                                                                                                                                <form name="tripPlanner" id="tripPlanner" action="http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm" method="post" class="td_frm" onsubmit="return _CF_checktripPlanner(this)">
+                                                                                                                                                                                                  <input type="hidden" name="show_email" value="on">
+                                                                                                                                                                                                  
+                                                                                                                                                                                                  <input type="hidden" name="Minimize" value="T">
+                                                                                                                                                                                                  <input type="hidden" name="StreetAddressTo" value="Dupont Circle">
+                                                                                                                                                                                                  <input type="hidden" name="StreetAddressFrom" value="Ballston">
+                                                                                                                                                                                                  <input type="hidden" name="StreetAddressTo_Area" value="">
+                                                                                                                                                                                                  <input type="hidden" name="StreetAddressFrom_Area" value="">
+                                                                                                                                                                                                  <input type="hidden" name="Mode" value="A">
+                                                                                                                                                                                                  <input type="hidden" name="WalkDistance" value="0.75">
+                                                                                                                                                                                                  
+
+                                                                                                                                                                                                  <fieldset>
+                                                                                                                                                                                                    <div class="dt_inner">
+                                                                                                                                                                                                        <div id="time_wrap">
+                                                                                                                                                                                                            <label>Time</label>
+                                                                                                                                                                                                            <select name="ArrDep">
+                                                                                                                                                                                                             <option value="D" selected="">Leaving After
+                                                                                                                                                                                                             </option>
+                                                                                                                                                                                                             <option value="A">Arriving By
+                                                                                                                                                                                                             </option>
+                                                                                                                                                                                                         </select>
+
+                                                                                                                                                                                                         <input name="Time" id="Time" type="text" value="03:45" maxlength="5" size="5" alt="Enter travel time i.e. 08:42" onblur="if( !_CF_hasValue(this, &#39;TEXT&#39;, false) &amp;&amp; !_CF_checkregex(this.value,/^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$/, true) ){ _CF_onErrorAlert(new Array(&#39;You must enter a time in the proper format i.e. 08:42&#39;)); }"> 
+
+                                                                                                                                                                                                         <select name="AMPM">
+                                                                                                                                                                                                             <option value="AM">AM</option>
+                                                                                                                                                                                                             <option value="PM" selected="">PM</option>
+                                                                                                                                                                                                         </select>	
+                                                                                                                                                                                                     </div>
+
+                                                                                                                                                                                                     <div id="date_wrap">
+                                                                                                                                                                                                        <label>Date</label>
+                                                                                                                                                                                                        
+
+                                                                                                                                                                                                        <select name="dateMonth" onchange="updateDays(this.form)">
+                                                                                                                                                                                                         <option value="1">
+                                                                                                                                                                                                             Jan</option>
+                                                                                                                                                                                                             <option value="2">
+                                                                                                                                                                                                                 Feb</option>
+                                                                                                                                                                                                                 <option value="3">
+                                                                                                                                                                                                                     Mar</option>
+                                                                                                                                                                                                                     <option value="4">
+                                                                                                                                                                                                                         Apr</option>
+                                                                                                                                                                                                                         <option value="5">
+                                                                                                                                                                                                                             May</option>
+                                                                                                                                                                                                                             <option value="6">
+                                                                                                                                                                                                                                 Jun</option>
+                                                                                                                                                                                                                                 <option value="7">
+                                                                                                                                                                                                                                     Jul</option>
+                                                                                                                                                                                                                                     <option value="8">
+                                                                                                                                                                                                                                         Aug</option>
+                                                                                                                                                                                                                                         <option value="9">
+                                                                                                                                                                                                                                             Sep</option>
+                                                                                                                                                                                                                                             <option value="10">
+                                                                                                                                                                                                                                                 Oct</option>
+                                                                                                                                                                                                                                                 <option value="11" selected="">
+                                                                                                                                                                                                                                                     Nov</option>
+                                                                                                                                                                                                                                                     <option value="12">
+                                                                                                                                                                                                                                                         Dec</option>
+                                                                                                                                                                                                                                                     </select>
+
+                                                                                                                                                                                                                                                     <select name="dateDay" onmousedown="updateDays(this.form)">
+                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                       <option value="1">
+                                                                                                                                                                                                                                                           1</option>
+                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                           <option value="2">
+                                                                                                                                                                                                                                                               2</option>
+                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                               <option value="3">
+                                                                                                                                                                                                                                                                   3</option>
+                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                   <option value="4">
+                                                                                                                                                                                                                                                                       4</option>
+                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                       <option value="5">
+                                                                                                                                                                                                                                                                           5</option>
+                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                           <option value="6">
+                                                                                                                                                                                                                                                                               6</option>
+                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                               <option value="7">
+                                                                                                                                                                                                                                                                                   7</option>
+                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                   <option value="8">
+                                                                                                                                                                                                                                                                                       8</option>
+                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                       <option value="9">
+                                                                                                                                                                                                                                                                                           9</option>
+                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                           <option value="10">
+                                                                                                                                                                                                                                                                                               10</option>
+                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                               <option value="11">
+                                                                                                                                                                                                                                                                                                   11</option>
+                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                   <option value="12">
+                                                                                                                                                                                                                                                                                                       12</option>
+                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                       <option value="13">
+                                                                                                                                                                                                                                                                                                           13</option>
+                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                           <option value="14">
+                                                                                                                                                                                                                                                                                                               14</option>
+                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                               <option value="15">
+                                                                                                                                                                                                                                                                                                                   15</option>
+                                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                   <option value="16">
+                                                                                                                                                                                                                                                                                                                       16</option>
+                                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                       <option value="17">
+                                                                                                                                                                                                                                                                                                                           17</option>
+                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                           <option value="18">
+                                                                                                                                                                                                                                                                                                                               18</option>
+                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                               <option value="19">
+                                                                                                                                                                                                                                                                                                                                   19</option>
+                                                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                   <option value="20">
+                                                                                                                                                                                                                                                                                                                                       20</option>
+                                                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                                       <option value="21">
+                                                                                                                                                                                                                                                                                                                                           21</option>
+                                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                                           <option value="22">
+                                                                                                                                                                                                                                                                                                                                               22</option>
+                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                               <option value="23">
+                                                                                                                                                                                                                                                                                                                                                   23</option>
+                                                                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                                   <option value="24">
+                                                                                                                                                                                                                                                                                                                                                       24</option>
+                                                                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                                                       <option value="25" selected="">
+                                                                                                                                                                                                                                                                                                                                                           25</option>
+                                                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                                                           <option value="26">
+                                                                                                                                                                                                                                                                                                                                                               26</option>
+                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                               <option value="27">
+                                                                                                                                                                                                                                                                                                                                                                   27</option>
+                                                                                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                                                   <option value="28">
+                                                                                                                                                                                                                                                                                                                                                                       28</option>
+                                                                                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                                                                       <option value="29">
+                                                                                                                                                                                                                                                                                                                                                                           29</option>
+                                                                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                                                                           <option value="30">
+                                                                                                                                                                                                                                                                                                                                                                               30</option>
+                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                               <option value="31">
+                                                                                                                                                                                                                                                                                                                                                                                   31</option>
+                                                                                                                                                                                                                                                                                                                                                                                   
+                                                                                                                                                                                                                                                                                                                                                                               </select>
+
+                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                               <select name="dateYear">
+                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                 <option value="2012" selected="">2012</option>
+                                                                                                                                                                                                                                                                                                                                                                                 <option value="2013">2013</option>
+                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                             </select>
+                                                                                                                                                                                                                                                                                                                                                                         </div>
+                                                                                                                                                                                                                                                                                                                                                                     </div>
+
+                                                                                                                                                                                                                                                                                                                                                                     
+                                                                                                                                                                                                                                                                                                                                                                     <input id="submit_bb" type="image" alt="Submit" name="submit" value="adjustTime" src="./fares_files/submit_btn_blue.gif">
+
+                                                                                                                                                                                                                                                                                                                                                                 </fieldset>
+                                                                                                                                                                                                                                                                                                                                                                 <input type="hidden" name="Time_CFFORMREGEX" value="^(0[1-9]|1[012]|[0-9]):([0-5][0-9])$">
+                                                                                                                                                                                                                                                                                                                                                                 <input type="hidden" name="Time_CFFORMREQUIRED" value="You must enter a time in the proper format i.e. 08:42">
+                                                                                                                                                                                                                                                                                                                                                             </form>
+
+                                                                                                                                                                                                                                                                                                                                                         </div><!-- inner grad -->
+                                                                                                                                                                                                                                                                                                                                                     </div><!-- time_date module -->
+                                                                                                                                                                                                                                                                                                                                                 </div>
+                                                                                                                                                                                                                                                                                                                                             </div>
+                                                                                                                                                                                                                                                                                                                                         </div>
+                                                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                                         <p style="font-size:10px;" align="center">
+                                                                                                                                                                                                                                                                                                                                            <br>&nbsp;<br>
+                                                                                                                                                                                                                                                                                                                                            The Trip Planner is also available over the phone by calling: 202-637-7000 (TTY 638-3780).
+                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                            <br>Visit Metro's <a href="http://www.wmata.com/fares/purchase/where.cfm">Sales Locations search page</a> to find retail outlets that sell SmarTrip® cards. 
+                                                                                                                                                                                                                                                                                                                                            <br><a href="javascript:alert('The following transit providers do not accept SmarTrip:\n\nMARC Commuter Train service\nVRE Commuter Train  service\nLaurel Connect-A-Ride\nHoward County Transit\nFrederick County Transit\nAnnapolis City Transit');">Click here</a> for a list of transit providers who do not accept SmarTrip. 
+                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                        </p>
+                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                        <div id="time_module" align="center">
+                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                            <p style="font-size:12px">
+                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                <img src="./fares_files/icon_clock_sm.jpg" alt="" align="absmiddle"> <b>View trips:</b> <a onmouseover="self.status=&#39;&#39;; return true;" onmouseout="self.status=&#39;&#39;; return true;" href="http://www.wmata.com/rider_tools/tripplanner/parse_PlanTrip_timespan_scr.cfm?Startlat=38.882247&Startlong=-77.111803&Endlat=38.911115&Endlong=-77.044865&StreetAddressFrom=Ballston&StreetAddressTo=Dupont%20Circle&StreetAddressFrom_Area=&StreetAddressTo_Area=&Time=1545&Time2=03:45&Date=11/25/2012&Minimize=T&ArrDep=D&WalkDistance=0.75&Mode=A&AmPm=PM&DateDay=25&DateMonth=11&DateYear=2012&mout=1&ts=5" onclick="self.status=&#39;Please wait, loading ...&#39;;showStatusMsg();"><b>5</b></a>, <a onmouseover="self.status=&#39;&#39;; return true;" onmouseout="self.status=&#39;&#39;; return true;" href="http://www.wmata.com/rider_tools/tripplanner/parse_PlanTrip_timespan_scr.cfm?Startlat=38.882247&Startlong=-77.111803&Endlat=38.911115&Endlong=-77.044865&StreetAddressFrom=Ballston&StreetAddressTo=Dupont%20Circle&StreetAddressFrom_Area=&StreetAddressTo_Area=&Time=1545&Time2=03:45&Date=11/25/2012&Minimize=T&ArrDep=D&WalkDistance=0.75&Mode=A&AmPm=PM&DateDay=25&DateMonth=11&DateYear=2012&mout=1&ts=10" onclick="self.status=&#39;Please wait, loading ...&#39;;showStatusMsg();"><b>10</b></a>, <a onmouseover="self.status=&#39;&#39;; return true;" onmouseout="self.status=&#39;&#39;; return true;" href="http://www.wmata.com/rider_tools/tripplanner/parse_PlanTrip_timespan_scr.cfm?Startlat=38.882247&Startlong=-77.111803&Endlat=38.911115&Endlong=-77.044865&StreetAddressFrom=Ballston&StreetAddressTo=Dupont%20Circle&StreetAddressFrom_Area=&StreetAddressTo_Area=&Time=1545&Time2=03:45&Date=11/25/2012&Minimize=T&ArrDep=D&WalkDistance=0.75&Mode=A&AmPm=PM&DateDay=25&DateMonth=11&DateYear=2012&mout=1&ts=15" onclick="self.status=&#39;Please wait, loading ...&#39;;showStatusMsg();"><b>15</b></a>, <a onmouseover="self.status=&#39;&#39;; return true;" onmouseout="self.status=&#39;&#39;; return true;" href="http://www.wmata.com/rider_tools/tripplanner/parse_PlanTrip_timespan_scr.cfm?Startlat=38.882247&Startlong=-77.111803&Endlat=38.911115&Endlong=-77.044865&StreetAddressFrom=Ballston&StreetAddressTo=Dupont%20Circle&StreetAddressFrom_Area=&StreetAddressTo_Area=&Time=1545&Time2=03:45&Date=11/25/2012&Minimize=T&ArrDep=D&WalkDistance=0.75&Mode=A&AmPm=PM&DateDay=25&DateMonth=11&DateYear=2012&mout=1&ts=20" onclick="self.status=&#39;Please wait, loading ...&#39;;showStatusMsg();"><b>20</b></a>, <a onmouseover="self.status=&#39;&#39;; return true;" onmouseout="self.status=&#39;&#39;; return true;" href="http://www.wmata.com/rider_tools/tripplanner/parse_PlanTrip_timespan_scr.cfm?Startlat=38.882247&Startlong=-77.111803&Endlat=38.911115&Endlong=-77.044865&StreetAddressFrom=Ballston&StreetAddressTo=Dupont%20Circle&StreetAddressFrom_Area=&StreetAddressTo_Area=&Time=1545&Time2=03:45&Date=11/25/2012&Minimize=T&ArrDep=D&WalkDistance=0.75&Mode=A&AmPm=PM&DateDay=25&DateMonth=11&DateYear=2012&mout=1&ts=25" onclick="self.status=&#39;Please wait, loading ...&#39;;showStatusMsg();"><b>25</b></a> <b>minutes before and after.</b> 
+                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                            </p> 
+                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                            <a href="http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm#">Back to top</a>&nbsp; <font color="#CCCCCC">|</font> &nbsp;<a href="http://www.wmata.com/rider_tools/tripplanner/tripplanner_form_solo.cfm">New itinerary</a>
+                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                        <div class="clb"></div>
+                                                                                                                                                                                                                                                                                                                                        <!-- end content -->
+
+                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                        <p></p>
+                                                                                                                                                                                                                                                                                                                                        <!-- end content -->
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                    <div class="internal-box2-foot"></div>
+                                                                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                        </div>
+
+                                                                                                                                                                                                                                                                                                                        <div id="footer">
+                                                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                                            <div class="row1">
+                                                                                                                                                                                                                                                                                                                             <p class="inside-left">
+                                                                                                                                                                                                                                                                                                                                
+
+
+
+
+
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.wmata.com/about_metro/contact.cfm?">Contact Us</a> &nbsp; | &nbsp;  
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.wmata.com/about_metro/lost_found/">Lost &amp; Found</a> &nbsp; | &nbsp; 
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.wmata.com/about_metro/transit_police/">Police</a> &nbsp; | &nbsp; 
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.wmata.com/about_metro/news/newsroom.cfm">News</a> &nbsp; | &nbsp; 
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.wmata.com/business/index.cfm">Business</a> &nbsp; | &nbsp; 
+                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.wmata.com/getting_around/safety_security/">Safety</a> &nbsp; | &nbsp; 
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.wmata.com/community_outreach">Community</a> &nbsp; | &nbsp; 
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.wmata.com/careers">Careers</a> &nbsp; | &nbsp; 
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.wmata.com/about_metro/calendar/index.cfm?">Calendar</a> &nbsp; | &nbsp; 
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.apistores.com/wmata/" target="_new">Metro Gifts</a> &nbsp; | &nbsp;
+                                                                                                                                                                                                                                                                                                                               <a href="http://www.wmata.com/getting_around/translation.cfm?">Translations</a> &nbsp; 	
+
+
+                                                                                                                                                                                                                                                                                                                           </p>
+                                                                                                                                                                                                                                                                                                                           
+                                                                                                                                                                                                                                                                                                                           <p class="inside-right">
+                                                                                                                                                                                                                                                                                                                           </p><div align="right"> 
+                                                                                                                                                                                                                                                                                                                           
+
+                                                                                                                                                                                                                                                                                                                           <script language="JavaScript">
+                                                                                                                                                                                                                                                                                                                           <!-- 
+                                                                                                                                                                                                                                                                                                                           function goto(form) { var index=form.select.selectedIndex
+                                                                                                                                                                                                                                                                                                                            if (form.select.options[index].value != "0") {
+                                                                                                                                                                                                                                                                                                                                location=form.select.options[index].value;}}
+            //-->
+            </script>
+            
+            <form name="form1">
+                <select name="select" onchange="goto(this.form)" size="1" style="height: 21px; font-size:75%; background-color:#f2f1f0; border:1px solid #d0d0d0;">
+                    <option value="" style="font-size:75%;">Languages</option>
+                    <option value="http://es.wmata.com//rider_tools/tripplanner/tripplanner.cfm">Español</option>
+                    <option value="http://fr.wmata.com//rider_tools/tripplanner/tripplanner.cfm">Français</option>
+                    <option value="http://ko.wmata.com//rider_tools/tripplanner/tripplanner.cfm">Korean</option>
+                    <option value="http://zs.wmata.com//rider_tools/tripplanner/tripplanner.cfm">Chinese</option>
+                    <option value="http://vi.wmata.com//rider_tools/tripplanner/tripplanner.cfm">Vietnamese</option>
+                    <option mpdisurl="" value="http://www.wmata.com/index.cfm">English</option>
+                </select>
+                
+                
+
+                
+                &nbsp;<a href="http://www.wmata.com/accessibility/browse_aloud.cfm?"><img src="./fares_files/speaker.gif" width="19" height="19" align="absmiddle" title="Browse Aloud Support" alt="BrowseAloud icon"></a>
+            </form>
+            <p></p>
+            
+        </div>
+        
+    </div>
+    
+</div>
+</div>
+
+<div id="footer2">
+  <img src="./fares_files/footer-long-2.gif" alt=""><br>
+  <div class="row2">
+     <p class="inside-left">© 2012 Washington Metropolitan Area Transit Authority &nbsp; &nbsp; &nbsp; <a href="http://www.wmata.com/about_metro/privacy.cfm?">Privacy Policy and Legal Disclaimer</a></p>
+ </div>
+</div>
+<script type="text/javascript" src="./fares_files/mpel.js"></script><script src="./fares_files/mpel(1).js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./fares_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3504190-1");
+pageTracker._trackPageview();
+</script>
+
+
+</div><div id="window-resizer-tooltip"><a href="http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm#" title="Edit settings" style="background-image: url(chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/images/icon_19.png);"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth"></span> x <span class="tooltipHeight" id="winHeight"></span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth"></span> x <span class="tooltipHeight" id="vpHeight"></span></div></body></html>

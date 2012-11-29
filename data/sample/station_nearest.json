@@ -1,0 +1,40 @@
+{
+  "Entrances": [
+    {
+      "Description": "Ballston, Elevator",
+      "ID": "151",
+      "Lat": 38.882353,
+      "Lon": -77.112131,
+      "Name": "Ballston Elevator",
+      "StationCode1": "K04",
+      "StationCode2": ""
+    },
+    {
+      "Description": "Ballston, Main",
+      "ID": "150",
+      "Lat": 38.881882,
+      "Lon": -77.111363,
+      "Name": "Ballston Main",
+      "StationCode1": "K04",
+      "StationCode2": ""
+    },
+    {
+      "Description": "Virginia Square, Main",
+      "ID": "165",
+      "Lat": 38.883139,
+      "Lon": -77.103414,
+      "Name": "Virginia Square Main",
+      "StationCode1": "K03",
+      "StationCode2": ""
+    },
+    {
+      "Description": "Clarendon, Elevator",
+      "ID": "153",
+      "Lat": 38.88674,
+      "Lon": -77.095697,
+      "Name": "Clarendon Elevator",
+      "StationCode1": "K02",
+      "StationCode2": ""
+    }
+  ]
+}

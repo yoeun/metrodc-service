@@ -1,0 +1,15 @@
+{ "Incidents": [
+		{
+			"DateUpdated": "/Date(1353749495000+0000)/",
+			"DelaySeverity": null,
+			"Description": "Orange Line: Expect residual delays in both directions due to an earlier train malfunction outside Deanwood.",
+			"EmergencyText": null,
+			"EndLocationFullName": null,
+			"IncidentID": "1D2F85B5-D9C8-4FE4-8032-6BF7C0262264",
+			"IncidentType": "Delay",
+			"LinesAffected": "OR;",
+			"PassengerDelay": 0,
+			"StartLocationFullName": null
+		}
+	]
+}

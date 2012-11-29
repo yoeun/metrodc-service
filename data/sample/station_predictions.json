@@ -1,0 +1,70 @@
+{
+  "Trains": [
+    {
+      "Car": "6",
+      "Destination": "Vienna",
+      "DestinationCode": "K08",
+      "DestinationName": "Vienna",
+      "Group": "2",
+      "Line": "OR",
+      "LocationCode": "K04",
+      "LocationName": "Ballston",
+      "Min": "7"
+    },
+    {
+      "Car": "6",
+      "Destination": "NewCrltn",
+      "DestinationCode": "D13",
+      "DestinationName": "New Carrollton",
+      "Group": "1",
+      "Line": "OR",
+      "LocationCode": "K04",
+      "LocationName": "Ballston",
+      "Min": "13"
+    },
+    {
+      "Car": "6",
+      "Destination": "Vienna",
+      "DestinationCode": "K08",
+      "DestinationName": "Vienna",
+      "Group": "2",
+      "Line": "OR",
+      "LocationCode": "K04",
+      "LocationName": "Ballston",
+      "Min": "15"
+    },
+    {
+      "Car": "",
+      "Destination": "",
+      "DestinationCode": null,
+      "DestinationName": "",
+      "Group": "1",
+      "Line": "",
+      "LocationCode": "K04",
+      "LocationName": "Ballston",
+      "Min": ""
+    },
+    {
+      "Car": "",
+      "Destination": "",
+      "DestinationCode": null,
+      "DestinationName": "",
+      "Group": "1",
+      "Line": "",
+      "LocationCode": "K04",
+      "LocationName": "Ballston",
+      "Min": ""
+    },
+    {
+      "Car": "",
+      "Destination": "",
+      "DestinationCode": null,
+      "DestinationName": "",
+      "Group": "2",
+      "Line": "",
+      "LocationCode": "K04",
+      "LocationName": "Ballston",
+      "Min": ""
+    }
+  ]
+}

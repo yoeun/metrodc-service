@@ -1,0 +1,37 @@
+require 'rubygems'
+require 'bundler/setup'
+require 'rspec/core/rake_task'
+
+port = 1981
+
+desc "Default task starts application"
+task :default => :start
+
+desc "Start application"
+task :start do
+  puts "Starting the application... "
+  `thin -s 1 -R ./config.ru -p #{port} start`
+  puts "Running on 0.0.0.0:#{port}\n"
+end
+
+desc "Stop application"
+task :stop do
+  pid = "tmp/pids/thin.#{port}.pid"
+  if File.exists? pid
+    print "Stopping the application... "
+    `thin stop -P #{pid}`
+    print "Stopped\n"
+  end
+end
+
+desc "Restart application"
+task :restart => [:stop, :start]
+
+if !defined?(RSpec)
+  puts "spec targets require RSpec"
+else
+  desc "Run all specs"
+  RSpec::Core::RakeTask.new(:spec) do |t|
+    t.rspec_opts = ['-cfs']
+  end
+end
