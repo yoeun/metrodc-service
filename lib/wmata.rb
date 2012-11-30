@@ -38,9 +38,9 @@ class WMATA
   def WMATA.rail_lines
     result = begin
       response = Excon.get("#{API_URL}/Rail.svc/json/JLines?api_key=#{API_KEY}")
-      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("sample/lines.json"))
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/lines.json"))
     rescue Excon::Errors::SocketError
-      JSON.parse(File.read("sample/lines.json"))
+      JSON.parse(File.read("data/sample/lines.json"))
     end
     @@lines = result["Lines"]
   end
@@ -60,9 +60,9 @@ class WMATA
   def WMATA.rail_stations
     result = begin
       response = Excon.get("#{API_URL}/Rail.svc/json/JStations?api_key=#{API_KEY}")
-      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("sample/stations.json"))
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/stations.json"))
     rescue Excon::Errors::SocketError
-      JSON.parse(File.read("sample/stations.json"))
+      JSON.parse(File.read("data/sample/stations.json"))
     end
     @@stations = result["Stations"]
   end
@@ -81,9 +81,9 @@ class WMATA
   def WMATA.rail_arrivals(station_id = "all")
     result = begin
       response = Excon.get("#{API_URL}/StationPrediction.svc/json/GetPrediction/#{station_id}?api_key=#{API_KEY}")
-      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("sample/station_predictions.json"))
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/station_predictions.json"))
     rescue Excon::Errors::SocketError
-      JSON.parse(File.read("sample/station_predictions.json"))
+      JSON.parse(File.read("data/sample/station_predictions.json"))
     end
     @@arrivals[station_id] = result["Trains"]
   end
@@ -103,9 +103,9 @@ class WMATA
   def WMATA.rail_incidents
     result = begin
       response = Excon.get("#{API_URL}/Incidents.svc/json/Incidents?api_key=#{API_KEY}")
-      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("sample/incidents.json"))
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/incidents.json"))
     rescue Excon::Errors::SocketError
-      JSON.parse(File.read("sample/incidents.json"))
+      JSON.parse(File.read("data/sample/incidents.json"))
     end
     result["Incidents"]
   end
@@ -122,9 +122,9 @@ class WMATA
   def WMATA.rail_nearest(lat, lon, radius = 3128)
     result = begin
       response = Excon.get("#{API_URL}/Rail.svc/json/JStationEntrances?lat=#{lat}&lon=#{lon}&radius=#{radius}&api_key=#{API_KEY}")
-      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("sample/station_nearest.json"))
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/station_nearest.json"))
     rescue Excon::Errors::SocketError
-      JSON.parse(File.read("sample/station_nearest.json"))
+      JSON.parse(File.read("data/sample/station_nearest.json"))
     end
     entrance = result["Entrances"][0]
     station_code1 = entrance["StationCode1"]
@@ -162,9 +162,9 @@ class WMATA
   def WMATA.bus_routes
     result = begin
       response = Excon.get("#{API_URL}/Bus.svc/json/JRoutes?api_key=#{API_KEY}")
-      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("sample/routes.json"))
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/routes.json"))
     rescue Excon::Errors::SocketError
-      JSON.parse(File.read("sample/routes.json"))
+      JSON.parse(File.read("data/sample/routes.json"))
     end
     @@routes = result["Routes"]
   end
@@ -179,9 +179,26 @@ class WMATA
   def WMATA.bus_stops
     result = begin
       response = Excon.get("#{API_URL}/Bus.svc/json/JStops?api_key=#{API_KEY}")
-      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("sample/stops.json"))
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/stops.json"))
     rescue Excon::Errors::SocketError
-      JSON.parse(File.read("sample/stops.json"))
+      JSON.parse(File.read("data/sample/stops.json"))
+    end
+    @@stops = result["Stops"]
+  end
+
+  # {
+  #   Lat: 38.832962,
+  #   Lon: -77.122586,
+  #   Name: "#1801 BEAUREGARD ST",
+  #   Routes: [ "7A", "7Av1", "7Av2", "7F", "7Fv1", "7W", "7X" ],
+  #   StopID: "4000472"
+  # }
+  def WMATA.bus_nearest(lat, lon, radius = 1500)
+    result = begin
+      response = Excon.get("#{API_URL}/Bus.svc/json/JStops?lat=#{lat}&lon=#{lon}&radius=#{radius}&api_key=#{API_KEY}")
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/stops.json"))
+    rescue Excon::Errors::SocketError
+      JSON.parse(File.read("data/sample/stops.json"))
     end
     @@stops = result["Stops"]
   end
@@ -216,9 +233,9 @@ class WMATA
     date = DateTime.now
     result = begin
       response = Excon.get("#{API_URL}/Bus.svc/json/JRouteDetails?routeId=#{route_id}&date=#{date}&api_key=#{API_KEY}")
-      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("sample/route_details.json"))
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/route_details.json"))
     rescue Excon::Errors::SocketError
-      JSON.parse(File.read("sample/route_details.json"))
+      JSON.parse(File.read("data/sample/route_details.json"))
     end
     details = [result["Direction0"]]
     details.push(result["Direction1"]) unless result["Direction1"].nil?
@@ -235,9 +252,9 @@ class WMATA
   def WMATA.bus_arrivals(stop_id)
     result = begin
       response = Excon.get("#{API_URL}/NextBusService.svc/json/JPredictions?StopID=#{stop_id}&api_key=#{API_KEY}")
-      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("sample/bus_predictions.json"))
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/bus_predictions.json"))
     rescue Excon::Errors::SocketError
-      JSON.parse(File.read("sample/bus_predictions.json"))
+      JSON.parse(File.read("data/sample/bus_predictions.json"))
     end
     @@arrivals[stop_id] = result["Predictions"]
   end
