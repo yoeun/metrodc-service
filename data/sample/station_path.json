@@ -1,0 +1,46 @@
+{
+  "Path": [
+    {
+      "DistanceToPrev": 0,
+      "LineCode": "OR",
+      "SeqNum": 8,
+      "StationCode": "K01",
+      "StationName": "Court House"
+    },
+    {
+      "DistanceToPrev": 5807,
+      "LineCode": "OR",
+      "SeqNum": 9,
+      "StationCode": "C05",
+      "StationName": "Rosslyn"
+    },
+    {
+      "DistanceToPrev": 6993,
+      "LineCode": "OR",
+      "SeqNum": 10,
+      "StationCode": "C04",
+      "StationName": "Foggy Bottom"
+    },
+    {
+      "DistanceToPrev": 2783,
+      "LineCode": "OR",
+      "SeqNum": 11,
+      "StationCode": "C03",
+      "StationName": "Farragut West"
+    },
+    {
+      "DistanceToPrev": 2001,
+      "LineCode": "OR",
+      "SeqNum": 12,
+      "StationCode": "C02",
+      "StationName": "McPherson Square"
+    },
+    {
+      "DistanceToPrev": 2359,
+      "LineCode": "OR",
+      "SeqNum": 13,
+      "StationCode": "C01",
+      "StationName": "Metro Center"
+    }
+  ]
+}

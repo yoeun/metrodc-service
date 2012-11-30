@@ -1,0 +1,2 @@
+class BusPrediction
+end
