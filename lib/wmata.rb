@@ -3,6 +3,14 @@ require 'excon'
 require 'json'
 require 'nokogiri'
 
+require_relative './bus_route'
+require_relative './bus_stop'
+require_relative './prediction'
+require_relative './rail_line'
+require_relative './rail_station'
+require_relative './rail_entrance'
+require_relative './trip'
+
 class WMATA
   API_KEY = 'wancf3trz46npvzu8mw3xzp8'
   API_URL = 'http://api.wmata.com'
@@ -42,7 +50,15 @@ class WMATA
     rescue Excon::Errors::SocketError
       JSON.parse(File.read("data/sample/lines.json"))
     end
-    @@lines = result["Lines"]
+
+    @@lines = result["Lines"].map do |ln|
+      line = RailLine.new
+      line.id = ln['LineCode']
+      line.name = ln['DisplayName']
+      line.first_station = ln['StartStationCode']
+      line.last_station = ln['EndStationCode']
+      line
+    end
   end
 
   # {
@@ -64,7 +80,38 @@ class WMATA
     rescue Excon::Errors::SocketError
       JSON.parse(File.read("data/sample/stations.json"))
     end
-    @@stations = result["Stations"]
+
+    @@stations = result["Stations"].map do |st|
+      station = RailStation.new
+      station.id = st['Code']
+      station.name = st['Name']
+      station.line_id = st['LineCode1']
+      station.lat = st['Lat']
+      station.lon = st['Lon']
+      station
+    end
+  end
+
+  def WMATA.rail_stations_for(line_id)
+    line = lines.select { |ln| ln.id == line_id }[0]
+    line.stations = rail_station_to_station(line.first_station, line.last_station)
+  end
+
+  def WMATA.rail_station_to_station(startStation, endStation)
+    result = begin
+      response = Excon.get("#{API_URL}/Rail.svc/json/JPath?FromStationCode=#{startStation}&ToStationCode=#{endStation}&api_key=#{API_KEY}")
+      response.status == 200 ? JSON.parse(response.body) : JSON.parse(File.read("data/sample/station_path.json"))
+    rescue Excon::Errors::SocketError
+      JSON.parse(File.read("data/sample/station_path.json"))
+    end
+
+    result["Path"].map do |st|
+      station = RailStation.new
+      station.id = st['StationCode']
+      station.name = st['StationName']
+      station.line_id = st['LineCode']
+      station
+    end
   end
 
   # {
@@ -126,18 +173,25 @@ class WMATA
     rescue Excon::Errors::SocketError
       JSON.parse(File.read("data/sample/station_nearest.json"))
     end
-    entrance = result["Entrances"][0]
-    station_code1 = entrance["StationCode1"]
-    station_code2 = entrance["StationCode2"]
-    result["Entrances"]
+    result["Entrances"].map do |e|
+      ent = RailEntrance.new
+      ent.name = e['Name']
+      ent.id = e['ID']
+      ent.lat = e['Lat']
+      ent.lon = e['Lon']
+      ent.desc = e['Description']
+      ent.stations.push(e['StationCode1']) unless e['StationCode1'].nil? || e['StationCode1'] == ''
+      ent.stations.push(e['StationCode2']) unless e['StationCode2'].nil? || e['StationCode2'] == ''
+      ent
+    end
   end
 
   def WMATA.rail_entrances(station_id)
     radius = 805 # in meters (0.5 miles)
     station_id = station_id.upcase
-    station = stations.select {|s| s['Code'] == station_id}[0]
-    rail_nearest(station['Lat'], station['Lon'], radius).select do |e|
-      e['StationCode1'] == station_id || e["StationCode2"] == station_id
+    station = stations.select {|s| s.id == station_id}[0]
+    rail_nearest(station.lat, station.lon, radius).select do |e|
+      e.stations.include? station_id
     end
   end
 
@@ -279,9 +333,9 @@ class WMATA
     body = parameterize(params)
     html = begin
       response = Excon.post("http://www.wmata.com/rider_tools/tripplanner/tripplanner.cfm", :headers => {'Content-Type' => 'application/x-www-form-urlencoded'}, :body => parameterize(params))
-      response.status == 200 ? response.body : File.read('sample/fares.html')
+      response.status == 200 ? response.body : File.read('data/sample/fares.html')
     rescue Excon::Errors::SocketError
-      File.read('sample/fares.html')
+      File.read('data/sample/fares.html')
     end
     result = WMATA.parse_fare_html(html)
     result

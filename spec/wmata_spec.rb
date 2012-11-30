@@ -8,12 +8,9 @@ describe WMATA do
 
       result.length.should eq 5
 
-      result[0].should have_key "DisplayName"
-      result[0].should have_key "EndStationCode"
-      result[0].should have_key "InternalDestination1"
-      result[0].should have_key "InternalDestination2"
-      result[0].should have_key "LineCode"
-      result[0].should have_key "StartStationCode"
+      result.each do |r|
+        # puts r.inspect
+      end
     end
 
     it "should return all stations" do
@@ -22,16 +19,26 @@ describe WMATA do
 
       result.length.should eq 90
 
-      result[0].should have_key "Code"
-      result[0].should have_key "Lat"
-      result[0].should have_key "LineCode1"
-      result[0].should have_key "LineCode2"
-      result[0].should have_key "LineCode3"
-      result[0].should have_key "LineCode4"
-      result[0].should have_key "Lon"
-      result[0].should have_key "Name"
-      result[0].should have_key "StationTogether1"
-      result[0].should have_key "StationTogether2"
+      result.each do |r|
+        # puts r.inspect
+      end
+    end
+
+    it "should return all stations for line" do
+      line_id = "OR"
+      result = WMATA.rail_stations_for(line_id)
+      result.should_not be_empty
+
+      result.each do |r|
+        r.line_id.should eq line_id
+      end
+    end
+
+    it "should return all stations in path" do
+      station1 = "K08"
+      station2 = "D13"
+      result = WMATA.rail_station_to_station(station1, station2)
+      result.should_not be_empty
     end
 
     it "should return all arrivals" do
@@ -70,13 +77,9 @@ describe WMATA do
       result = WMATA.rail_nearest(location['lat'], location['lon'])
       result.should_not be_empty
 
-      result[0].should have_key "Description"
-      result[0].should have_key "ID"
-      result[0].should have_key "Lat"
-      result[0].should have_key "Lon"
-      result[0].should have_key "Name"
-      result[0].should have_key "StationCode1"
-      result[0].should have_key "StationCode2"
+      result.each do |r|
+        # puts r.inspect
+      end
     end
 
     it "should return all entrances for station" do
@@ -85,15 +88,7 @@ describe WMATA do
       result.should_not be_empty
 
       result.each do |r|
-        r.should have_key "Description"
-        r.should have_key "ID"
-        r.should have_key "Lat"
-        r.should have_key "Lon"
-        r.should have_key "Name"
-        r.should have_key "StationCode1"
-        r.should have_key "StationCode2"
-
-        # test that station ID is correct
+        r.stations.include? station_id
       end
     end
   end
@@ -115,11 +110,9 @@ describe WMATA do
 
       result.length.should eq 11321
 
-      result[0].should have_key "Lat"
-      result[0].should have_key "Lon"
-      result[0].should have_key "Name"
-      result[0].should have_key "Routes"
-      result[0].should have_key "StopID"
+      result.each do |r|
+        # puts r.inspect
+      end
     end
 
     it "should return nearest bus stops" do
@@ -127,13 +120,11 @@ describe WMATA do
       result = WMATA.bus_nearest(location['lat'], location['lon'])
       result.should_not be_empty
 
-      result.length.should eq 11321
+      result.length.should eq 132
 
-      result[0].should have_key "Lat"
-      result[0].should have_key "Lon"
-      result[0].should have_key "Name"
-      result[0].should have_key "Routes"
-      result[0].should have_key "StopID"
+      result.each do |r|
+        # puts r.inspect
+      end
     end
 
     it "should return route detail" do
@@ -142,11 +133,9 @@ describe WMATA do
       result.should_not be_empty
       result.length.should eq 2
 
-      result[0].should have_key "DirectionNum"
-      result[0].should have_key "DirectionText"
-      result[0].should have_key "Shape"
-      result[0].should have_key "Stops"
-      result[0].should have_key "TripHeadsign"
+      result.each do |r|
+        # puts r.inspect
+      end
 
       result[0]["DirectionText"].should eq "WEST"
       result[0]["TripHeadsign"].should eq "BALLSTON STATION"
@@ -159,6 +148,10 @@ describe WMATA do
       stop_id = 6000560 # N Glebe & Washington Blvd
       result = WMATA.bus_arrivals(stop_id)
       result.should_not be_empty
+
+      result.each do |r|
+        # puts r.inspect
+      end
 
       result[0].should have_key "DirectionNum"
       result[0].should have_key "DirectionText"
