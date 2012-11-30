@@ -111,10 +111,11 @@ class App < Sinatra::Base
     as_response(result)
   end
 
-  # return list of all bus stops
+  # return list of all bus stops for route
   get "/#{VERSION}/bus/routes/:route_id/stops" do
+    route_id = params[:route_id]
     result = from_cache('/bus/stops', EXP_DAY*7) do
-      WMATA.bus_stops
+      WMATA.bus_route_details(route_id)
     end
 
     as_response(result)

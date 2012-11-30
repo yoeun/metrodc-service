@@ -122,6 +122,20 @@ describe WMATA do
       result[0].should have_key "StopID"
     end
 
+    it "should return nearest bus stops" do
+      location = { 'lon' => -77.1181486, 'lat' => 38.8852313 } # ava ballston
+      result = WMATA.bus_nearest(location['lat'], location['lon'])
+      result.should_not be_empty
+
+      result.length.should eq 11321
+
+      result[0].should have_key "Lat"
+      result[0].should have_key "Lon"
+      result[0].should have_key "Name"
+      result[0].should have_key "Routes"
+      result[0].should have_key "StopID"
+    end
+
     it "should return route detail" do
       route_id = "38B"
       result = WMATA.bus_route_details(route_id)

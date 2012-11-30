@@ -40,6 +40,10 @@ describe App do
       true
     end
 
+    it "should get nearest stops" do
+      true
+    end
+
     it "should get all arrival times for stop" do
       true
     end
