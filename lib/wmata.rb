@@ -5,7 +5,8 @@ require 'nokogiri'
 
 require_relative './bus_route'
 require_relative './bus_stop'
-require_relative './prediction'
+require_relative './bus_prediction'
+require_relative './rail_prediction'
 require_relative './rail_line'
 require_relative './rail_station'
 require_relative './rail_entrance'
@@ -58,6 +59,10 @@ class WMATA
       line.first_station = ln['StartStationCode']
       line.last_station = ln['EndStationCode']
       line
+    end
+
+    lines.each do |ln|
+      ln.stations = rail_station_to_station(ln.first_station, ln.last_station).map {|st| st.id}
     end
   end
 
@@ -132,7 +137,18 @@ class WMATA
     rescue Excon::Errors::SocketError
       JSON.parse(File.read("data/sample/station_predictions.json"))
     end
-    @@arrivals[station_id] = result["Trains"]
+
+    @@arrivals[station_id] = result["Trains"].select() {|i| i['Min'] != ''}.map do |train|
+      a = RailPrediction.new
+      a.cars = train['Car']
+      a.dest_id = train['DestinationCode']
+      a.dest_name = train['DestinationName']
+      a.group = train['Group']
+      a.line_id = train['Line']
+      a.station_id = train['LocationCode']
+      a.minutes = train['Min']
+      a
+    end
   end
 
   # {

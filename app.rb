@@ -4,6 +4,7 @@ require 'sinatra/base'
 require 'date'
 require 'json'
 require 'memcache'
+require 'haml'
 
 require './lib/wmata'
 
@@ -19,7 +20,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    "MetroDC API 1.0"
+    haml :index, :format => :html5
   end
 
   # ====================
@@ -43,10 +44,7 @@ class App < Sinatra::Base
 
     line_id = params[:line_id].upcase
     stations = result.select do |s|
-      s["LineCode1"] == line_id ||
-      s["LineCode2"] == line_id ||
-      s["LineCode3"] == line_id ||
-      s["LineCode4"] == line_id
+      s.line_id == line_id
     end
 
     # TODO: Order stations in correct order (W to E, or N to S)
@@ -65,7 +63,12 @@ class App < Sinatra::Base
 
   # return list of all stations by location
   get "/#{VERSION}/rail/stations/:station_id/entrances" do
-    as_error(500, "Not implemented")
+    station_id = params[:station_id].upcase
+    result = from_cache("/rail/stations/#{station_id}/entrances", EXP_DAY*7) do
+      WMATA.rail_entrances(station_id)
+    end
+
+    as_response(result)
   end
 
   # return list of arrival times by station ID
@@ -77,7 +80,7 @@ class App < Sinatra::Base
     end
 
     arrivals = result.select do |a|
-      a["LocationCode"] == station_id
+      a.station_id == station_id
     end
 
     as_response(arrivals)
