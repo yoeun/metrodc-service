@@ -1,5 +1,5 @@
 class RailEntrance
-  attr_accessor :name, :id, :stations, :lat, :lon, :desc
+  attr_accessor :name, :id, :stations, :lat, :lon, :desc, :station_name
 
   def initialize
     @stations = []
@@ -13,6 +13,7 @@ class RailEntrance
       'lat' => @lat,
       'lon' => @lon,
       'stations' => @stations,
+      'station_name' => @station_name,
     }.to_json(*opt)
   end
 end
