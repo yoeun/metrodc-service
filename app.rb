@@ -83,7 +83,7 @@ class App < Sinatra::Base
       a.station_id == station_id
     end
 
-    as_response(arrivals)
+    as_response(arrivals.group_by {|a| a.group})
   end
 
   # return list of all stations by location

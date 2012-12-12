@@ -198,6 +198,7 @@ class WMATA
       ent.desc = e['Description']
       ent.stations.push(e['StationCode1']) unless e['StationCode1'].nil? || e['StationCode1'] == ''
       ent.stations.push(e['StationCode2']) unless e['StationCode2'].nil? || e['StationCode2'] == ''
+      ent.station_name = ent.desc.split(',')[0]
       ent
     end
   end
