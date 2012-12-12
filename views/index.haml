@@ -1,0 +1,36 @@
+!!! 5
+%html
+  %head
+    %title Metro DC API v1.0
+  %body
+    %h1 Metro DC API v1.0
+
+    %h3 Rail
+    %ul
+      %li
+        %a{:href => "/1/rail/lines"} All lines
+      %li
+        %a{:href => "/1/rail/stations"} All stations
+      %li
+        %a{:href => "/1/rail/lines/OR/stations"} All stations for Orange line
+      %li
+        %a{:href => "/1/rail/stations/K04/entrances"} All entrances for Ballston metro
+      %li
+        %a{:href => "/1/rail/stations/K04/arrivals"} Arrivals for Ballston metro
+      %li
+        %a{:href => "/1/rail/stations/nearest/38.8852313/-77.1181486"} Nearest station to AVA Ballston
+      %li
+        %a{:href => "/1/rail/fares/Ballston/Dupont Circle/2012-12-03 09:00:00/"} Fare from Ballston to Dupont Circle at 9am
+
+    %h3 Bus
+    %ul
+      %li
+        %a{:href => "/1/bus/routes"} All bus routes
+      %li
+        %a{:href => "/1/bus/routes/38B/stops"} All stops for 38B
+      %li
+        %a{:href => "/1/bus/stops/6000560/arrivals"} All arrivals at Washington & N Glebe for 38B
+      %li
+        %a{:href => "/1/bus/stops/nearest/38.8852313/-77.1181486"} Nearest bus stops to AVA Ballston
+      %li
+        %a{:href => "/1/bus/fares/Ballston/Dupont Circle/2012-12-03 09:00:00/"} All arrivals at Washington & N Glebe for 38B
